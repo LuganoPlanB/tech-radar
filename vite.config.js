@@ -43,6 +43,7 @@ function radarDataWatcher() {
 }
 
 export default defineConfig({
+  base: "/tech-radar/",
   plugins: [radarDataWatcher()],
   server: {
     host: "127.0.0.1",
