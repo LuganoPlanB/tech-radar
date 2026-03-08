@@ -1,0 +1,284 @@
+:root {
+  --font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  --color-canvas: #171717;
+  --color-panel: #211d1d;
+  --color-panel-soft: #272222;
+  --color-text: #ffffff;
+  --color-text-soft: rgba(255, 255, 255, 0.72);
+  --color-grid: #595959;
+  --color-orange: #f7931a;
+  --color-coral: #e15364;
+  --gradient-heading: linear-gradient(90deg, #f7931a 4%, #e15364 45%);
+  --gradient-text: linear-gradient(90deg, #f7931a 12%, #e15364 68%);
+  --gradient-hero: linear-gradient(132deg, rgba(247, 147, 26, 0.58) -1.7%, rgba(183, 51, 67, 0.58) 85%);
+  --gradient-band: linear-gradient(90deg, #f7931a 8%, #e15364 61%);
+  --shadow-panel: 0 30px 80px rgba(0, 0, 0, 0.32);
+  --border-soft: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top left, rgba(247, 147, 26, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(225, 83, 100, 0.16), transparent 24%),
+    var(--color-canvas);
+}
+
+a {
+  color: inherit;
+}
+
+code {
+  font-family: Consolas, "SFMono-Regular", monospace;
+  font-size: 0.9em;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 54vh;
+  border-bottom: var(--border-soft);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.42)),
+    url("./../planb-website/planb.lugano.ch/wp-content/uploads/2025/07/front_hero_desktop_frame.jpg") center / cover no-repeat,
+    var(--color-canvas);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero);
+}
+
+.hero__inner,
+.content {
+  position: relative;
+  width: min(1440px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.hero__inner {
+  z-index: 1;
+  padding: 88px 0 96px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: var(--color-coral);
+  background: var(--gradient-heading);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 {
+  max-width: 12ch;
+  font-size: clamp(3rem, 8vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.04;
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.lede,
+.section-heading p,
+.ring-card p,
+.entry-list__meta {
+  color: var(--color-text-soft);
+}
+
+.lede {
+  max-width: 40rem;
+  margin: 20px 0 0;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.5;
+}
+
+.content {
+  padding: 48px 0 96px;
+}
+
+.radar-panel,
+.info-grid {
+  margin-top: 44px;
+  padding: 32px;
+  border: var(--border-soft);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  box-shadow: var(--shadow-panel);
+}
+
+.radar-panel:first-child {
+  margin-top: -42px;
+}
+
+.section-heading {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.section-heading p {
+  margin: 0;
+  max-width: 56rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.radar-stage {
+  overflow-x: auto;
+  padding: 16px 0 8px;
+}
+
+.radar-stage svg {
+  display: block;
+  min-width: 1100px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+
+.ring-grid,
+.quadrant-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.ring-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.quadrant-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ring-card,
+.quadrant-card {
+  border-radius: 22px;
+  border: var(--border-soft);
+  background: var(--color-panel);
+  padding: 22px;
+}
+
+.ring-card__title {
+  color: var(--ring-color);
+  margin-bottom: 10px;
+}
+
+.ring-card p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.entry-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.entry-list__item {
+  display: grid;
+  gap: 3px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.entry-list__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.entry-list__link {
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.entry-list__link:hover {
+  text-decoration: underline;
+}
+
+.entry-list__meta {
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .ring-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quadrant-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero__inner,
+  .content {
+    width: min(1440px, calc(100% - 24px));
+  }
+
+  .hero__inner {
+    padding: 68px 0 72px;
+  }
+
+  .radar-panel,
+  .info-grid {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .radar-panel:first-child {
+    margin-top: -26px;
+  }
+
+  .ring-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .radar-stage svg {
+    min-width: 960px;
+  }
+}

@@ -18,9 +18,19 @@
     "yargs-parser": "21.1.1"
   },
   "scripts": {
-    "start": "browser-sync docs -w",
+    "sync:data": "node scripts/generate-radar-data-module.mjs",
+    "dev": "npm run sync:data && vite",
+    "build": "npm run sync:data && vite build",
+    "preview": "vite preview",
+    "start": "npm run dev",
+    "test": "node test/normalizeRadarData.test.mjs",
     "lint": "npm run lint:js && npm run lint:html",
     "lint:js": "eslint docs/*.js",
     "lint:html": "htmllint docs/*.html"
+  },
+  "dependencies": {
+    "d3": "^4.13.0",
+    "vite": "^7.3.1",
+    "yaml": "^2.8.2"
   }
 }
