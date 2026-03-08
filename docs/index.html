@@ -13,627 +13,627 @@
 
 <body>
 
-	<svg id="radar"></svg>
+  <svg id="radar"></svg>
 
-	<script>
-	 radar_visualization({
-		 svg_id: "radar",
-		 width: 1450,
-		 height: 1000,
-		 colors: {
-			 background: "#fff",
-			 grid: "#bbb",
-			 inactive: "#ddd"
-		 },
-		 title: "Dyne.org Tech Radar — 2019.4",
-		 quadrants: [
-			 { name: "Languages" },
-			 { name: "Infra / Hosting" },
-			 { name: "Network / Security" },
-			 { name: "Data Management" }
-		 ],
-		 rings: [
-			 { name: "ADOPT", color: "#93c47d" },
-			 { name: "TRIAL", color: "#93d2c2" },
-			 { name: "ASSESS", color: "#fbdb84" },
-			 { name: "HOLD", color: "#efafa9" }
-		 ],
-		 print_layout: true,
+  <script>
+   radar_visualization({
+     svg_id: "radar",
+     width: 1450,
+     height: 1000,
+     colors: {
+       background: "#fff",
+       grid: "#bbb",
+       inactive: "#ddd"
+     },
+     title: "Dyne.org Tech Radar — 2019.4",
+     quadrants: [
+       { name: "Languages" },
+       { name: "Infra / Hosting" },
+       { name: "Network / Security" },
+       { name: "Data Management" }
+     ],
+     rings: [
+       { name: "ADOPT", color: "#93c47d" },
+       { name: "TRIAL", color: "#93d2c2" },
+       { name: "ASSESS", color: "#fbdb84" },
+       { name: "HOLD", color: "#efafa9" }
+     ],
+     print_layout: true,
      links_in_new_tabs: true,
-		 // zoomed_quadrant: 0,
-		 //ENTRIES
-		 entries: [
+     // zoomed_quadrant: 0,
+     //ENTRIES
+     entries: [
 
-			 /* Networking */
-			 {
-				 quadrant: 2,
-				 ring: 0,
-				 label: "Tor",
-				 active: true,
-				 link: "../net/tor.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 0,
-				 label: "Gopher",
-				 active: true,
-				 link: "https://nl.wikipedia.org/wiki/Gopher",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 0,
-				 label: "WolfSSL",
-				 active: true,
-				 link: "../sec/wolfssl.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 0,
-				 label: "Socks5",
-				 active: true,
-				 link: "../net/socks5.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 0,
-				 label: "OSC",
-				 active: true,
-				 link: "../net/osc.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 3,
-				 label: "ZeroMQ",
-				 active: true,
-				 link: "../net/zeromq.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 3,
-				 label: "TCP/IP",
-				 active: true,
-				 link: "../net/tcpip.html",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 3,
-				 label: "OpenSSL",
-				 active: true,
-				 link: "../sec/openssl.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 1,
-				 label: "libsodium",
-				 active: true,
-				 link: "../sec/libsodium.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 0,
-				 label: "Flask",
-				 active: true,
-				 link: "../net/flask.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 3,
-				 label: "Django",
-				 active: true,
-				 link: "../net/django.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 0,
-				 label: "Compojure",
-				 active: true,
-				 link: "../net/compojure.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 1,
-				 label: "IPFS",
-				 active: true,
-				 link: "../net/ipfs.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 2,
-				 label: "gRPC",
-				 active: true,
-				 link: "../frameworks/grpc.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 1,
-				 label: "tor-dam",
-				 active: true,
-				 link: "../net/tor-dam.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 2,
-				 ring: 1,
-				 label: "roundshot",
-				 active: true,
-				 link: "../net/roundshot.html",
-				 moved: 0
-			 },
+       /* Networking */
+       {
+         quadrant: 2,
+         ring: 0,
+         label: "Tor",
+         active: true,
+         link: "../net/tor.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 0,
+         label: "Gopher",
+         active: true,
+         link: "https://nl.wikipedia.org/wiki/Gopher",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 0,
+         label: "WolfSSL",
+         active: true,
+         link: "../sec/wolfssl.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 0,
+         label: "Socks5",
+         active: true,
+         link: "../net/socks5.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 0,
+         label: "OSC",
+         active: true,
+         link: "../net/osc.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 3,
+         label: "ZeroMQ",
+         active: true,
+         link: "../net/zeromq.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 3,
+         label: "TCP/IP",
+         active: true,
+         link: "../net/tcpip.html",
+         moved: 1
+       },
+       {
+         quadrant: 2,
+         ring: 3,
+         label: "OpenSSL",
+         active: true,
+         link: "../sec/openssl.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 1,
+         label: "libsodium",
+         active: true,
+         link: "../sec/libsodium.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 0,
+         label: "Flask",
+         active: true,
+         link: "../net/flask.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 3,
+         label: "Django",
+         active: true,
+         link: "../net/django.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 0,
+         label: "Compojure",
+         active: true,
+         link: "../net/compojure.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 1,
+         label: "IPFS",
+         active: true,
+         link: "../net/ipfs.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 2,
+         label: "gRPC",
+         active: true,
+         link: "../frameworks/grpc.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 1,
+         label: "tor-dam",
+         active: true,
+         link: "../net/tor-dam.html",
+         moved: 0
+       },
+       {
+         quadrant: 2,
+         ring: 1,
+         label: "roundshot",
+         active: true,
+         link: "../net/roundshot.html",
+         moved: 0
+       },
 
-			 /* Infra / Hosting */
-			 {
-				 quadrant: 1,
-				 ring: 0,
-				 label: "Gentoo",
-				 active: true,
-				 link: "https://gentoo.org",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 0,
-				 label: "Qemu",
-				 active: true,
-				 link: "../infra/qemu.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 3,
-				 label: "DigitalOcean",
-				 active: true,
-				 link: "../hosting/digitalocean.html",
-				 moved: -1
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 2,
-				 label: "Docker",
-				 active: true,
-				 link: "../infrastructure/docker.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 0,
-				 label: "LXC",
-				 active: true,
-				 link: "https://linuxcontainers.org",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 0,
-				 label: "Ganeti",
-				 active: true,
-				 link: "http://www.ganeti.org",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 2,
-				 label: "Kubernetes",
-				 active: true,
-				 link: "https://kubernetes.io",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 1,
-				 label: "AWS",
-				 active: true,
-				 link: "../infrastructure/aws.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 1,
-				 label: "Alpine",
-				 active: true,
-				 link: "https://alpinelinux.org",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 0,
-				 label: "Devuan",
-				 active: true,
-				 link: "https://devuan.org",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 3,
-				 label: "Debian",
-				 active: true,
-				 link: "../distro/debian.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 1,
-				 label: "Gentoo",
-				 active: true,
-				 link: "../distro/gentoo.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 1,
-				 label: "HAProxy",
-				 active: true,
-				 link: "../infrastructure/haproxy.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 1,
-				 label: "OpenResty",
-				 active: true,
-				 link: "../infrastructure/openresty.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 0,
-				 label: "Nginx",
-				 active: true,
-				 link: "../infrastructure/nginx.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 1,
-				 ring: 3,
-				 label: "OpenNebula",
-				 active: true,
-				 link: "../hosting/opennebula.html",
-				 moved: -1
-			 },
+       /* Infra / Hosting */
+       {
+         quadrant: 1,
+         ring: 0,
+         label: "Gentoo",
+         active: true,
+         link: "https://gentoo.org",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 0,
+         label: "Qemu",
+         active: true,
+         link: "../infra/qemu.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 3,
+         label: "DigitalOcean",
+         active: true,
+         link: "../hosting/digitalocean.html",
+         moved: -1
+       },
+       {
+         quadrant: 1,
+         ring: 2,
+         label: "Docker",
+         active: true,
+         link: "../infrastructure/docker.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 0,
+         label: "LXC",
+         active: true,
+         link: "https://linuxcontainers.org",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 0,
+         label: "Ganeti",
+         active: true,
+         link: "http://www.ganeti.org",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 2,
+         label: "Kubernetes",
+         active: true,
+         link: "https://kubernetes.io",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 1,
+         label: "AWS",
+         active: true,
+         link: "../infrastructure/aws.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 1,
+         label: "Alpine",
+         active: true,
+         link: "https://alpinelinux.org",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 0,
+         label: "Devuan",
+         active: true,
+         link: "https://devuan.org",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 3,
+         label: "Debian",
+         active: true,
+         link: "../distro/debian.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 1,
+         label: "Gentoo",
+         active: true,
+         link: "../distro/gentoo.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 1,
+         label: "HAProxy",
+         active: true,
+         link: "../infrastructure/haproxy.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 1,
+         label: "OpenResty",
+         active: true,
+         link: "../infrastructure/openresty.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 0,
+         label: "Nginx",
+         active: true,
+         link: "../infrastructure/nginx.html",
+         moved: 0
+       },
+       {
+         quadrant: 1,
+         ring: 3,
+         label: "OpenNebula",
+         active: true,
+         link: "../hosting/opennebula.html",
+         moved: -1
+       },
 
-			 /* Languages  */
+       /* Languages  */
 
-			 {
-				 quadrant: 0,
-				 ring: 0,
-				 label: "Go",
-				 active: true,
-				 link: "lua.org",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 1,
-				 label: "Go",
-				 active: true,
-				 link: "go.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 1,
-				 label: "Clojurescript",
-				 active: true,
-				 link: "clojurescript.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 0,
-				 label: "Clojure",
-				 active: true,
-				 link: "clojure.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 2,
-				 label: "Scala",
-				 active: true,
-				 link: "Scala.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 2,
-				 label: "V",
-				 active: true,
-				 link: "https://vlang.io/",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 1,
-				 label: "TypeScript",
-				 active: true,
-				 link: "typescript.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 3,
-				 label: "Javascript",
-				 active: true,
-				 link: "javascript.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 0,
-				 label: "Swagger",
-				 active: true,
-				 link: "swagger.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 0,
-				 label: "Python",
-				 active: true,
-				 link: "python.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 2,
-				 label: "Rust",
-				 active: true,
-				 link: "rust.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 0,
-				 label: "R",
-				 active: true,
-				 link: "R.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 0,
-				 label: "C99",
-				 active: true,
-				 link: "C99.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 2,
-				 label: "Erlang",
-				 active: true,
-				 link: "erlang.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 3,
-				 label: "Perl",
-				 active: true,
-				 link: "perl.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 3,
-				 label: "PHP",
-				 active: true,
-				 link: "php.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 0,
-				 ring: 3,
-				 label: "Ruby",
-				 active: true,
-				 link: "ruby.html",
-				 moved: 0
-			 },
+       {
+         quadrant: 0,
+         ring: 0,
+         label: "Go",
+         active: true,
+         link: "lua.org",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 1,
+         label: "Go",
+         active: true,
+         link: "go.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 1,
+         label: "Clojurescript",
+         active: true,
+         link: "clojurescript.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 0,
+         label: "Clojure",
+         active: true,
+         link: "clojure.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 2,
+         label: "Scala",
+         active: true,
+         link: "Scala.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 2,
+         label: "V",
+         active: true,
+         link: "https://vlang.io/",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 1,
+         label: "TypeScript",
+         active: true,
+         link: "typescript.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 3,
+         label: "Javascript",
+         active: true,
+         link: "javascript.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 0,
+         label: "Swagger",
+         active: true,
+         link: "swagger.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 0,
+         label: "Python",
+         active: true,
+         link: "python.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 2,
+         label: "Rust",
+         active: true,
+         link: "rust.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 0,
+         label: "R",
+         active: true,
+         link: "R.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 0,
+         label: "C99",
+         active: true,
+         link: "C99.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 2,
+         label: "Erlang",
+         active: true,
+         link: "erlang.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 3,
+         label: "Perl",
+         active: true,
+         link: "perl.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 3,
+         label: "PHP",
+         active: true,
+         link: "php.html",
+         moved: 0
+       },
+       {
+         quadrant: 0,
+         ring: 3,
+         label: "Ruby",
+         active: true,
+         link: "ruby.html",
+         moved: 0
+       },
 
-			 /* Data Management */
-			 {
-				 quadrant: 3,
-				 ring: 2,
-				 label: "OpenNLP",
-				 active: true,
-				 link: "../frameworks/opennlp.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 2,
-				 label: "TensorFlow",
-				 active: true,
-				 link: "../frameworks/tensorflow.html",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 2,
-				 label: "Darknet",
-				 active: true,
-				 link: "https://pjreddie.com/darknet/",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 0,
-				 label: "Zenroom",
-				 active: true,
-				 link: "https://zenroom.dyne.org",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 0,
-				 label: "Git",
-				 active: true,
-				 link: "https://git-scm.com/",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 0,
-				 label: "POI",
-				 active: true,
-				 link: "https://poi.apache.org",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 0,
-				 label: "solr",
-				 active: true,
-				 link: "https://lucene.apache.org/solr",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 0,
-				 label: "Tomb",
-				 active: true,
-				 link: "https://tomb.dyne.org",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 2,
-				 label: "Hadoop",
-				 active: true,
-				 link: "../data_processing/hadoop.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 2,
-				 label: "Elasticsearch",
-				 active: true,
-				 link: "../datastores/elasticsearch.html",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 1,
-				 label: "etcd",
-				 active: true,
-				 link: "../datastores/etcd.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 3,
-				 label: "PostgreSQL",
-				 active: true,
-				 link: "../datastores/postgresql.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 0,
-				 label: "Redis",
-				 active: true,
-				 link: "../datastores/redis.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 3,
-				 label: "Consul",
-				 active: true,
-				 link: "../datastores/consul.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 3,
-				 label: "Memcached",
-				 active: true,
-				 link: "../datastores/memcached.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 3,
-				 label: "MongoDB",
-				 active: true,
-				 link: "../datastores/mongodb.html",
-				 moved: -1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 3,
-				 label: "MySQL",
-				 active: true,
-				 link: "../datastores/mysql.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 1,
-				 label: "Kafka",
-				 active: true,
-				 link: "../queues/kafka.html",
-				 moved: -1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 1,
-				 label: "Multichain",
-				 active: true,
-				 link: "../blockcains/multichain.html",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 1,
-				 label: "Sawtooth",
-				 active: true,
-				 link: "../blockcains/sawtooth.html",
-				 moved: 1
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 3,
-				 label: "Ethereum",
-				 active: true,
-				 link: "../blockcains/ethereum.html",
-				 moved: 0
-			 },
-			 {
-				 quadrant: 3,
-				 ring: 3,
-				 label: "Chainspace",
-				 active: true,
-				 link: "../blockcains/chainspace.html",
-				 moved: -1
-			 },
+       /* Data Management */
+       {
+         quadrant: 3,
+         ring: 2,
+         label: "OpenNLP",
+         active: true,
+         link: "../frameworks/opennlp.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 2,
+         label: "TensorFlow",
+         active: true,
+         link: "../frameworks/tensorflow.html",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 2,
+         label: "Darknet",
+         active: true,
+         link: "https://pjreddie.com/darknet/",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 0,
+         label: "Zenroom",
+         active: true,
+         link: "https://zenroom.dyne.org",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 0,
+         label: "Git",
+         active: true,
+         link: "https://git-scm.com/",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 0,
+         label: "POI",
+         active: true,
+         link: "https://poi.apache.org",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 0,
+         label: "solr",
+         active: true,
+         link: "https://lucene.apache.org/solr",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 0,
+         label: "Tomb",
+         active: true,
+         link: "https://tomb.dyne.org",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 2,
+         label: "Hadoop",
+         active: true,
+         link: "../data_processing/hadoop.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 2,
+         label: "Elasticsearch",
+         active: true,
+         link: "../datastores/elasticsearch.html",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 1,
+         label: "etcd",
+         active: true,
+         link: "../datastores/etcd.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 3,
+         label: "PostgreSQL",
+         active: true,
+         link: "../datastores/postgresql.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 0,
+         label: "Redis",
+         active: true,
+         link: "../datastores/redis.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 3,
+         label: "Consul",
+         active: true,
+         link: "../datastores/consul.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 3,
+         label: "Memcached",
+         active: true,
+         link: "../datastores/memcached.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 3,
+         label: "MongoDB",
+         active: true,
+         link: "../datastores/mongodb.html",
+         moved: -1
+       },
+       {
+         quadrant: 3,
+         ring: 3,
+         label: "MySQL",
+         active: true,
+         link: "../datastores/mysql.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 1,
+         label: "Kafka",
+         active: true,
+         link: "../queues/kafka.html",
+         moved: -1
+       },
+       {
+         quadrant: 3,
+         ring: 1,
+         label: "Multichain",
+         active: true,
+         link: "../blockcains/multichain.html",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 1,
+         label: "Sawtooth",
+         active: true,
+         link: "../blockcains/sawtooth.html",
+         moved: 1
+       },
+       {
+         quadrant: 3,
+         ring: 3,
+         label: "Ethereum",
+         active: true,
+         link: "../blockcains/ethereum.html",
+         moved: 0
+       },
+       {
+         quadrant: 3,
+         ring: 3,
+         label: "Chainspace",
+         active: true,
+         link: "../blockcains/chainspace.html",
+         moved: -1
+       },
 
-		 ]
-		 //ENTRIES
-	 });
-	</script>
+     ]
+     //ENTRIES
+   });
+  </script>
 
 <table>
 <tr>
 <td>
 
-	<h3>What is the Tech Radar?</h3>
+  <h3>What is the Tech Radar?</h3>
 
-	<p>
-		The Dyne.org Tech Radar is a list of technologies, organised by a criteria of maturity / usefulness / reliability which can be compared to a sort of <a href="https://en.wikipedia.org/wiki/Technology_readiness_level">TRL</a>. We use four rings with the following semantics:
+  <p>
+    The Dyne.org Tech Radar is a list of technologies, organised by a criteria of maturity / usefulness / reliability which can be compared to a sort of <a href="https://en.wikipedia.org/wiki/Technology_readiness_level">TRL</a>. We use four rings with the following semantics:
 </p>
 
 <ul>
@@ -658,7 +658,7 @@ This Tech Radar is maintained by an open group of senior Dyne.org developers com
 </p>
 
 <p>
-	<em>BTW, if you would like to create your own Tech Radar &mdash; <a href="https://github.com/dyne/tech-radar">the code is open source</a> and it can be used to generate another visualization like this one.</em>
+  <em>BTW, if you would like to create your own Tech Radar &mdash; <a href="https://github.com/dyne/tech-radar">the code is open source</a> and it can be used to generate another visualization like this one.</em>
 </p>
 
 </td></tr>
