@@ -1,0 +1,31 @@
+title: "Dyne.org Tech Radar — 2019.4"
+width: 1450
+height: 1000
+colors:
+  background: "#fff"
+  grid: "#bbb"
+  inactive: "#ddd"
+print_layout: true
+links_in_new_tabs: true
+quadrants:
+  - key: "languages"
+    name: "Languages"
+  - key: "infra_hosting"
+    name: "Infra / Hosting"
+  - key: "network_security"
+    name: "Network / Security"
+  - key: "data_management"
+    name: "Data Management"
+rings:
+  - key: "adopt"
+    name: "ADOPT"
+    color: "#93c47d"
+  - key: "trial"
+    name: "TRIAL"
+    color: "#93d2c2"
+  - key: "assess"
+    name: "ASSESS"
+    color: "#fbdb84"
+  - key: "hold"
+    name: "HOLD"
+    color: "#efafa9"

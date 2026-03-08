@@ -1,0 +1,98 @@
+quadrant: "network_security"
+entries:
+  - key: "tor"
+    label: "Tor"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../net/tor.html"
+  - key: "gopher"
+    label: "Gopher"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "https://nl.wikipedia.org/wiki/Gopher"
+  - key: "wolfssl"
+    label: "WolfSSL"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../sec/wolfssl.html"
+  - key: "socks5"
+    label: "Socks5"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../net/socks5.html"
+  - key: "osc"
+    label: "OSC"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../net/osc.html"
+  - key: "zeromq"
+    label: "ZeroMQ"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../net/zeromq.html"
+  - key: "tcp_ip"
+    label: "TCP/IP"
+    ring: "hold"
+    moved: 1
+    active: true
+    link: "../net/tcpip.html"
+  - key: "openssl"
+    label: "OpenSSL"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../sec/openssl.html"
+  - key: "libsodium"
+    label: "libsodium"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../sec/libsodium.html"
+  - key: "flask"
+    label: "Flask"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../net/flask.html"
+  - key: "django"
+    label: "Django"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../net/django.html"
+  - key: "compojure"
+    label: "Compojure"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../net/compojure.html"
+  - key: "ipfs"
+    label: "IPFS"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../net/ipfs.html"
+  - key: "grpc"
+    label: "gRPC"
+    ring: "assess"
+    moved: 0
+    active: true
+    link: "../frameworks/grpc.html"
+  - key: "tor_dam"
+    label: "tor-dam"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../net/tor-dam.html"
+  - key: "roundshot"
+    label: "roundshot"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../net/roundshot.html"

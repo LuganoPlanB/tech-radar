@@ -1,0 +1,98 @@
+quadrant: "infra_hosting"
+entries:
+  - key: "gentoo"
+    label: "Gentoo"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "https://gentoo.org"
+  - key: "qemu"
+    label: "Qemu"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../infra/qemu.html"
+  - key: "digitalocean"
+    label: "DigitalOcean"
+    ring: "hold"
+    moved: -1
+    active: true
+    link: "../hosting/digitalocean.html"
+  - key: "docker"
+    label: "Docker"
+    ring: "assess"
+    moved: 0
+    active: true
+    link: "../infrastructure/docker.html"
+  - key: "lxc"
+    label: "LXC"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "https://linuxcontainers.org"
+  - key: "ganeti"
+    label: "Ganeti"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "http://www.ganeti.org"
+  - key: "kubernetes"
+    label: "Kubernetes"
+    ring: "assess"
+    moved: 0
+    active: true
+    link: "https://kubernetes.io"
+  - key: "aws"
+    label: "AWS"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../infrastructure/aws.html"
+  - key: "alpine"
+    label: "Alpine"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "https://alpinelinux.org"
+  - key: "devuan"
+    label: "Devuan"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "https://devuan.org"
+  - key: "debian"
+    label: "Debian"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../distro/debian.html"
+  - key: "gentoo_2"
+    label: "Gentoo"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../distro/gentoo.html"
+  - key: "haproxy"
+    label: "HAProxy"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../infrastructure/haproxy.html"
+  - key: "openresty"
+    label: "OpenResty"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../infrastructure/openresty.html"
+  - key: "nginx"
+    label: "Nginx"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../infrastructure/nginx.html"
+  - key: "opennebula"
+    label: "OpenNebula"
+    ring: "hold"
+    moved: -1
+    active: true
+    link: "../hosting/opennebula.html"

@@ -1,0 +1,134 @@
+quadrant: "data_management"
+entries:
+  - key: "opennlp"
+    label: "OpenNLP"
+    ring: "assess"
+    moved: 0
+    active: true
+    link: "../frameworks/opennlp.html"
+  - key: "tensorflow"
+    label: "TensorFlow"
+    ring: "assess"
+    moved: 1
+    active: true
+    link: "../frameworks/tensorflow.html"
+  - key: "darknet"
+    label: "Darknet"
+    ring: "assess"
+    moved: 1
+    active: true
+    link: "https://pjreddie.com/darknet/"
+  - key: "zenroom"
+    label: "Zenroom"
+    ring: "adopt"
+    moved: 1
+    active: true
+    link: "https://zenroom.dyne.org"
+  - key: "git"
+    label: "Git"
+    ring: "adopt"
+    moved: 1
+    active: true
+    link: "https://git-scm.com/"
+  - key: "poi"
+    label: "POI"
+    ring: "adopt"
+    moved: 1
+    active: true
+    link: "https://poi.apache.org"
+  - key: "solr"
+    label: "solr"
+    ring: "adopt"
+    moved: 1
+    active: true
+    link: "https://lucene.apache.org/solr"
+  - key: "tomb"
+    label: "Tomb"
+    ring: "adopt"
+    moved: 1
+    active: true
+    link: "https://tomb.dyne.org"
+  - key: "hadoop"
+    label: "Hadoop"
+    ring: "assess"
+    moved: 0
+    active: true
+    link: "../data_processing/hadoop.html"
+  - key: "elasticsearch"
+    label: "Elasticsearch"
+    ring: "assess"
+    moved: 1
+    active: true
+    link: "../datastores/elasticsearch.html"
+  - key: "etcd"
+    label: "etcd"
+    ring: "trial"
+    moved: 0
+    active: true
+    link: "../datastores/etcd.html"
+  - key: "postgresql"
+    label: "PostgreSQL"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../datastores/postgresql.html"
+  - key: "redis"
+    label: "Redis"
+    ring: "adopt"
+    moved: 0
+    active: true
+    link: "../datastores/redis.html"
+  - key: "consul"
+    label: "Consul"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../datastores/consul.html"
+  - key: "memcached"
+    label: "Memcached"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../datastores/memcached.html"
+  - key: "mongodb"
+    label: "MongoDB"
+    ring: "hold"
+    moved: -1
+    active: true
+    link: "../datastores/mongodb.html"
+  - key: "mysql"
+    label: "MySQL"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../datastores/mysql.html"
+  - key: "kafka"
+    label: "Kafka"
+    ring: "trial"
+    moved: -1
+    active: true
+    link: "../queues/kafka.html"
+  - key: "multichain"
+    label: "Multichain"
+    ring: "trial"
+    moved: 1
+    active: true
+    link: "../blockcains/multichain.html"
+  - key: "sawtooth"
+    label: "Sawtooth"
+    ring: "trial"
+    moved: 1
+    active: true
+    link: "../blockcains/sawtooth.html"
+  - key: "ethereum"
+    label: "Ethereum"
+    ring: "hold"
+    moved: 0
+    active: true
+    link: "../blockcains/ethereum.html"
+  - key: "chainspace"
+    label: "Chainspace"
+    ring: "hold"
+    moved: -1
+    active: true
+    link: "../blockcains/chainspace.html"
