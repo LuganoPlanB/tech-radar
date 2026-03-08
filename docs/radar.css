@@ -1,19 +1,272 @@
-body {
-  font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
-  padding-bottom: 50px;
+/*
+  Plan B visual reference, extracted from the local `planb-website/` export.
+
+  Primary sources reviewed:
+  - planb-website/planb.lugano.ch/wp-content/uploads/elementor/css/post-25731.css
+  - planb-website/planb.lugano.ch/wp-content/uploads/elementor/css/post-6.css
+  - planb-website/planb.lugano.ch/index.html
+
+  Findings:
+  - Typography is consistently Inter.
+  - The site uses a dark canvas with bright gradient accents rather than flat fills.
+  - Headings are usually gradient-clipped text, not solid colors.
+  - Body copy stays white on near-black backgrounds.
+  - Buttons use a dark fill with gradient borders and gradient text.
+  - The hero/header treatment layers media with a warm orange-to-red overlay.
+  - Layout is roomy: 1440px container max-width and large horizontal gutters.
+
+  Core design tokens observed:
+  - Canvas: #171717
+  - Text: #FFFFFF
+  - Primary orange: #F7931A
+  - Secondary coral/red: #E15364
+  - Supporting orange: #F7941F
+  - Light apricot: #FFC785
+  - Deep wine red: #9E1436
+  - Bright yellow: #FFE605
+  - Accent blue: #205EC4
+
+  Common gradient treatments observed:
+  - Heading/text gradient:
+    linear-gradient(90deg, #F7931A 4%, #E15364 45%)
+  - Button text / underline gradient:
+    linear-gradient(90deg, #F7931A 12%, #E15364 68%)
+  - Hero overlay gradient:
+    linear-gradient(132deg, rgba(247,147,26,0.5) -1.7%, rgba(183,51,67,0.5) 85%)
+  - Section divider gradient:
+    linear-gradient(90deg, #F7931A 8%, #E15364 61%)
+
+  Type scale observed on the homepage:
+  - Large display headings: 75px / 800 / 1.16
+  - Secondary headings: 36px / 700
+  - Body text: 24px / 400 / 1.16
+  - CTA text links/buttons: 24px to 32px / 700
+  - Mobile section headings collapse to roughly 32px
+  - Mobile body text collapses to roughly 16px with looser line-height (~1.56)
+
+  Spacing and layout observed:
+  - Container max width: 1440px
+  - Desktop side padding: 70px
+  - Large tablet side padding: 50px
+  - Tablet side padding: 30px
+  - Mobile side padding: 20px
+  - Section spacing is generous, often 100px to 165px between major content blocks.
+
+  Distinctive stylistic cues worth preserving:
+  - Gradient-clipped headings with specific highlighted white words.
+  - Dark UI panels with warm gradient borders.
+  - Transparent CTA backgrounds; the border and text carry the visual emphasis.
+  - Warm cinematic overlays on header/hero media.
+  - Large type with sparse, confident composition.
+*/
+
+:root {
+  --planb-font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+  --planb-color-canvas: #171717;
+  --planb-color-text: #ffffff;
+  --planb-color-orange: #f7931a;
+  --planb-color-coral: #e15364;
+  --planb-color-orange-alt: #f7941f;
+  --planb-color-apricot: #ffc785;
+  --planb-color-wine: #9e1436;
+  --planb-color-yellow: #ffe605;
+  --planb-color-blue: #205ec4;
+
+  --planb-gradient-heading: linear-gradient(90deg, #f7931a 4%, #e15364 45%);
+  --planb-gradient-text: linear-gradient(90deg, #f7931a 12%, #e15364 68%);
+  --planb-gradient-section: linear-gradient(90deg, #f7931a 8%, #e15364 61%);
+  --planb-gradient-hero-overlay:
+    linear-gradient(132deg, rgba(247, 147, 26, 0.5) -1.7%, rgba(183, 51, 67, 0.5) 85%);
+  --planb-gradient-button-hover:
+    linear-gradient(90deg, #4b2126 13%, #503718 68%);
+
+  --planb-container-max: 1440px;
+  --planb-gutter-desktop: 70px;
+  --planb-gutter-laptop: 50px;
+  --planb-gutter-tablet: 30px;
+  --planb-gutter-mobile: 20px;
+
+  --planb-radius-control: 12px;
+  --planb-display-size: 75px;
+  --planb-display-weight: 800;
+  --planb-display-line-height: 1.16;
+  --planb-heading-size: 36px;
+  --planb-heading-weight: 700;
+  --planb-body-size: 24px;
+  --planb-body-weight: 400;
+  --planb-body-line-height: 1.16;
+  --planb-link-size: 32px;
+  --planb-link-weight: 700;
 }
+
+body {
+  font-family: var(--planb-font-family);
+  background: var(--planb-color-canvas);
+  color: var(--planb-color-text);
+  padding: 0 0 50px;
+}
+
+h1,
+h2,
+h3,
+.planb-gradient-heading {
+  margin: 0;
+  color: var(--planb-color-coral);
+  background: var(--planb-gradient-heading);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1,
+h2 {
+  font-size: var(--planb-display-size);
+  font-weight: var(--planb-display-weight);
+  line-height: var(--planb-display-line-height);
+}
+
 h3 {
+  font-size: var(--planb-heading-size);
+  font-weight: var(--planb-heading-weight);
   margin-top: 50px;
 }
-li {
-  margin: 25px 50px 0 0;
+
+p,
+li,
+td,
+a {
+  font-size: var(--planb-body-size);
+  font-weight: var(--planb-body-weight);
+  line-height: var(--planb-body-line-height);
+  color: var(--planb-color-text);
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.planb-highlight {
+  color: var(--planb-color-text);
+  -webkit-text-fill-color: var(--planb-color-text);
+}
+
+.planb-hero-overlay {
+  background-image: var(--planb-gradient-hero-overlay);
+}
+
+.planb-gradient-band {
+  background-image: var(--planb-gradient-section);
+}
+
+.planb-cta,
+button,
+input[type="button"],
+input[type="submit"] {
+  display: inline-block;
+  padding: 5px 17px;
+  border: 2px solid transparent;
+  border-radius: var(--planb-radius-control);
+  color: var(--planb-color-coral);
+  font-family: var(--planb-font-family);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+  background-image:
+    linear-gradient(var(--planb-color-canvas), var(--planb-color-canvas)),
+    var(--planb-gradient-heading),
+    var(--planb-gradient-heading);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  -webkit-background-clip: padding-box, border-box;
+}
+
+.planb-cta .label,
+button .label {
+  background: var(--planb-gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.planb-cta:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background-image:
+    var(--planb-gradient-button-hover),
+    var(--planb-gradient-heading);
+}
+
+.planb-link-cta {
+  display: inline-block;
+  font-size: var(--planb-link-size);
+  font-weight: var(--planb-link-weight);
+  color: var(--planb-color-text);
+  background-image: var(--planb-gradient-text);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 3px);
+  background-size: 100% 1.5px;
+}
+
+.planb-link-cta:hover {
+  background-size: 100% 0;
+}
+
 table {
-  width: 1400px;
-  margin: 0 50px 0 50px;
+  width: min(1400px, calc(100% - 2 * var(--planb-gutter-desktop)));
+  margin: 0 auto;
 }
+
 td {
   width: 50%;
   vertical-align: top;
   padding-right: 60px;
+}
+
+li {
+  margin: 25px 50px 0 0;
+}
+
+@media (max-width: 1366px) {
+  table {
+    width: min(100%, calc(100% - 2 * var(--planb-gutter-laptop)));
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --planb-display-size: 48px;
+    --planb-heading-size: 32px;
+    --planb-body-size: 20px;
+    --planb-link-size: 24px;
+  }
+
+  table {
+    width: min(100%, calc(100% - 2 * var(--planb-gutter-tablet)));
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --planb-display-size: 32px;
+    --planb-heading-size: 24px;
+    --planb-body-size: 16px;
+    --planb-body-line-height: 1.56;
+    --planb-link-size: 18px;
+  }
+
+  table {
+    width: min(100%, calc(100% - 2 * var(--planb-gutter-mobile)));
+  }
+
+  td {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+  }
 }
