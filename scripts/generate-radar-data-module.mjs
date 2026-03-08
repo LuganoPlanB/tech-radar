@@ -23,6 +23,7 @@ function sortQuadrantFiles(radar, filenames) {
 }
 
 export function generateRadarDataModule() {
+  const home = readYaml(path.join(dataDir, "home.yml"));
   const radar = readYaml(path.join(dataDir, "radar.yml"));
   const quadrantFilenames = sortQuadrantFiles(
     radar,
@@ -32,6 +33,7 @@ export function generateRadarDataModule() {
   const normalized = normalizeRadarData(radar, quadrantFiles);
 
   const moduleSource = [
+    `export const homeContent = ${JSON.stringify(home, null, 2)};`,
     `export const radarSource = ${JSON.stringify({ radar, quadrants: quadrantFiles }, null, 2)};`,
     `export const radarData = ${JSON.stringify(normalized, null, 2)};`,
     "",

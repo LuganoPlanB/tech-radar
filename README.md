@@ -5,6 +5,7 @@ This repository now builds the radar as a static Vite site backed by YAML conten
 ## Repository Structure
 
 - `data/radar.yml`: radar-wide metadata, colors, rings, and quadrants
+- `data/home.yml`: homepage copy, section labels, and ring descriptions
 - `data/quadrants/*.yml`: quadrant-specific entries
 - `src/radar/renderRadar.js`: D3 renderer adapted from the original static implementation
 - `src/radar/normalizeRadarData.mjs`: transforms symbolic YAML content into the renderer format
@@ -28,7 +29,7 @@ npm run dev
 While the dev server is running:
 
 - changes in `src/` hot reload immediately
-- changes in `data/radar.yml` and `data/quadrants/*.yml` regenerate the derived module and trigger a full page reload
+- changes in `data/home.yml`, `data/radar.yml`, and `data/quadrants/*.yml` regenerate the derived module and trigger a full page reload
 
 Build the static site:
 
@@ -53,6 +54,7 @@ npm run lint
 The source of truth for radar content is YAML.
 
 - Edit `data/radar.yml` for global metadata.
+- Edit `data/home.yml` for homepage copy.
 - Edit `data/quadrants/*.yml` for entries.
 - `npm run sync:data` regenerates the JS module consumed by the app.
 - `npm run dev` and `npm run build` run the data sync automatically.

@@ -1,14 +1,7 @@
 import "./style.css";
 
-import { radarData, radarSource } from "./generated/radarData.mjs";
+import { homeContent, radarData, radarSource } from "./generated/radarData.mjs";
 import { renderRadar } from "./radar/renderRadar.js";
-
-const ringDescriptions = {
-  ADOPT: "Technologies we trust broadly and recommend for serious use.",
-  TRIAL: "Technologies that already showed value in real work and merit wider use.",
-  ASSESS: "Promising technologies worth further research, prototyping, and validation.",
-  HOLD: "Technologies we would avoid for new work unless there is a strong reason.",
-};
 
 function renderQuadrants() {
   return radarSource.quadrants
@@ -46,7 +39,7 @@ function renderRings() {
       (ring) => `
         <article class="ring-card">
           <h3 class="ring-card__title" style="--ring-color: ${ring.color}">${ring.name}</h3>
-          <p>${ringDescriptions[ring.name]}</p>
+          <p>${homeContent.ring_descriptions[ring.name] || ""}</p>
         </article>
       `,
     )
@@ -58,20 +51,17 @@ document.querySelector("#app").innerHTML = `
     <header class="hero">
       <div class="hero__overlay"></div>
       <div class="hero__inner">
-        <p class="eyebrow">Static radar generated from YAML content</p>
-        <h1>${radarSource.radar.title}</h1>
-        <p class="lede">
-          The radar content now lives in structured YAML files and is rendered into a static Vite site.
-          The chart stays D3-based, but the content model is finally maintainable.
-        </p>
+        <p class="eyebrow">${homeContent.hero.eyebrow}</p>
+        <h1>${homeContent.hero.title || radarSource.radar.title}</h1>
+        <p class="lede">${homeContent.hero.lede}</p>
       </div>
     </header>
 
     <main class="content">
       <section class="radar-panel">
         <div class="section-heading">
-          <h2>Technology Landscape</h2>
-          <p>The radar below is rendered from <code>data/radar.yml</code> and per-quadrant YAML files.</p>
+          <h2>${homeContent.sections.radar.title}</h2>
+          <p>${homeContent.sections.radar.description}</p>
         </div>
         <div class="radar-stage">
           <svg id="radar" aria-label="Technology radar"></svg>
@@ -80,8 +70,8 @@ document.querySelector("#app").innerHTML = `
 
       <section class="info-grid">
         <div class="section-heading">
-          <h2>Ring Semantics</h2>
-          <p>The semantic model is now explicit in the content layer instead of being embedded inside one HTML file.</p>
+          <h2>${homeContent.sections.rings.title}</h2>
+          <p>${homeContent.sections.rings.description}</p>
         </div>
         <div class="ring-grid">
           ${renderRings()}
@@ -90,8 +80,8 @@ document.querySelector("#app").innerHTML = `
 
       <section class="info-grid">
         <div class="section-heading">
-          <h2>Quadrant Sources</h2>
-          <p>Each quadrant is maintained independently, which keeps edits reviewable and reduces merge conflicts.</p>
+          <h2>${homeContent.sections.quadrants.title}</h2>
+          <p>${homeContent.sections.quadrants.description}</p>
         </div>
         <div class="quadrant-grid">
           ${renderQuadrants()}
