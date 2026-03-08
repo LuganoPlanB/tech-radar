@@ -39,6 +39,7 @@ export function generateRadarDataModule() {
     "",
   ].join("\n");
 
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, moduleSource, "utf8");
 }
 
