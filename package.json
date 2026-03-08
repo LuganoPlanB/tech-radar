@@ -25,8 +25,8 @@
     "start": "npm run dev",
     "test": "node test/normalizeRadarData.test.mjs",
     "lint": "npm run lint:js && npm run lint:html",
-    "lint:js": "eslint docs/*.js",
-    "lint:html": "htmllint docs/*.html"
+    "lint:js": "eslint scripts/**/*.mjs src/**/*.{js,mjs} test/**/*.mjs vite.config.js docs/*.js",
+    "lint:html": "htmllint index.html docs/*.html"
   },
   "dependencies": {
     "d3": "^4.13.0",

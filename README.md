@@ -1,114 +1,62 @@
 # Dyne.org Tech Radar
 
-At [Dyne.org](https://dyne.org), we maintain a [public Tech Radar](https://tech-radar.dyne.org) to help our community align on technology choices.
+This repository now builds the radar as a static Vite site backed by YAML content.
 
-This repository contains the code to generate the visualization: [`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).  Feel free to use and adapt it for your own purposes.
+## Repository Structure
 
-This visualization is a fork of [Zalando's tech radar](https://github.com/zalando/tech-radar) which is inspired by the original [Thoughtworks tech radar](https://www.thoughtworks.com/radar). We share the form of the first, but not the contents of any of them.
-
-## Usage
-
-1. include `d3.js` and `radar.js`:
-
-```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.5.js"></script>
-```
-
-2. insert an empty `svg` tag:
-
-```html
-<svg id="radar"></svg>
-```
-
-3. configure the radar visualization:
-
-```js
-radar_visualization({
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  colors: {
-    background: "#fff",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  title: "My Radar",
-  quadrants: [
-    { name: "Bottom Right" },
-    { name: "Bottom Left" },
-    { name: "Top Left" },
-    { name: "Top Right" }
-  ],
-  rings: [
-    { name: "INNER",  color: "#93c47d" },
-    { name: "SECOND", color: "#b7e1cd" },
-    { name: "THIRD",  color: "#fce8b2" },
-    { name: "OUTER",  color: "#f4c7c3" }
-  ],
-  print_layout: true,
-  entries: [
-   {
-      label: "Some Entry",
-      quadrant: 3,          // 0,1,2,3 (counting clockwise, starting from bottom right)
-      ring: 2,              // 0,1,2,3 (starting from inside)
-      moved: -1             // -1 = moved out (triangle pointing down)
-                            //  0 = not moved (circle)
-                            //  1 = moved in  (triangle pointing up)
-   },
-    // ...
-  ]
-});
-```
-
-Entries are positioned automatically so that they don't overlap.
-
-As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](https://tech-radar.dyne.org).
+- `data/radar.yml`: radar-wide metadata, colors, rings, and quadrants
+- `data/quadrants/*.yml`: quadrant-specific entries
+- `src/radar/renderRadar.js`: D3 renderer adapted from the original static implementation
+- `src/radar/normalizeRadarData.mjs`: transforms symbolic YAML content into the renderer format
+- `scripts/generate-radar-data-module.mjs`: build-time data generation from YAML
+- `docs/`: legacy static implementation kept as reference during the migration
 
 ## Local Development
 
-1. install dependencies with yarn (or npm):
+Install dependencies:
 
-```
-yarn 
-```
-
-2. start local dev server:
-
-```
-yarn start
+```sh
+npm install
 ```
 
-3. your default browser should automatically open and show the url
- 
+Start the Vite dev server:
+
+```sh
+npm run dev
 ```
-http://localhost:3000/
+
+Build the static site:
+
+```sh
+npm run build
 ```
+
+Run tests:
+
+```sh
+npm test
+```
+
+Run lint checks:
+
+```sh
+npm run lint
+```
+
+## Content Workflow
+
+The source of truth for radar content is YAML.
+
+- Edit `data/radar.yml` for global metadata.
+- Edit `data/quadrants/*.yml` for entries.
+- `npm run sync:data` regenerates the JS module consumed by the app.
+- `npm run dev` and `npm run build` run the data sync automatically.
+
+## Notes
+
+- The chart renderer is still based on the original Zalando/Thoughtworks-style D3 radar.
+- The current Vite app is intentionally simple so it can later be embedded into VitePress without rewriting the data or rendering layers.
 
 ## License
 
-```
-The MIT License (MIT)
-
-Copyright (c) 2019 Dyne.org foundation
-Copyright (c) 2017 Zalando SE
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-```
+MIT
