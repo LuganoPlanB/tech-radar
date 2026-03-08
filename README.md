@@ -25,6 +25,11 @@ Start the Vite dev server:
 npm run dev
 ```
 
+While the dev server is running:
+
+- changes in `src/` hot reload immediately
+- changes in `data/radar.yml` and `data/quadrants/*.yml` regenerate the derived module and trigger a full page reload
+
 Build the static site:
 
 ```sh

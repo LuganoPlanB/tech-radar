@@ -22,7 +22,7 @@ function sortQuadrantFiles(radar, filenames) {
   });
 }
 
-function main() {
+export function generateRadarDataModule() {
   const radar = readYaml(path.join(dataDir, "radar.yml"));
   const quadrantFilenames = sortQuadrantFiles(
     radar,
@@ -40,4 +40,4 @@ function main() {
   fs.writeFileSync(outputPath, moduleSource, "utf8");
 }
 
-main();
+generateRadarDataModule();
