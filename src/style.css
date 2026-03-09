@@ -93,24 +93,26 @@ h3 {
 
 h1,
 h2 {
+  display: inline-block;
   color: var(--color-coral);
   background: var(--gradient-heading);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  padding-bottom: 0.08em;
 }
 
 h1 {
   max-width: 12ch;
   font-size: clamp(3rem, 8vw, 4.75rem);
   font-weight: 800;
-  line-height: 1.04;
+  line-height: 1.08;
 }
 
 h2 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.12;
 }
 
 h3 {
