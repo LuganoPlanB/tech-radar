@@ -5,6 +5,16 @@ import * as d3 from "d3";
 
 export function renderRadar(svgElement, config) {
   const font_family = "Inter, \"Segoe UI\", Arial, sans-serif";
+  const ring_emoji = {
+    ADOPT: "✅",
+    TRIAL: "🧪",
+    ASSESS: "🔍",
+    HOLD: "⏸️"
+  };
+
+  function ring_label(name) {
+    return (ring_emoji[name] ? ring_emoji[name] + " " : "") + name;
+  }
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -247,7 +257,7 @@ export function renderRadar(svgElement, config) {
       .style("stroke-width", 1);
     if (config.print_layout) {
       grid.append("text")
-        .text(config.rings[ringLoopIndex].name)
+        .text(ring_label(config.rings[ringLoopIndex].name))
         .attr("y", -rings[ringLoopIndex].radius + 62)
         .attr("text-anchor", "middle")
         .style("fill", config.rings[ringLoopIndex].color)
@@ -298,7 +308,7 @@ export function renderRadar(svgElement, config) {
       for (var legendRing = 0; legendRing < 4; legendRing++) {
         legend.append("text")
           .attr("transform", legend_transform(quadrantLoop, legendRing))
-          .text(config.rings[legendRing].name)
+          .text(ring_label(config.rings[legendRing].name))
           .style("font-family", font_family)
           .style("font-size", "12px")
           .style("font-weight", "bold")

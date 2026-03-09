@@ -3,6 +3,17 @@ import "./style.css";
 import { homeContent, radarData, radarSource } from "./generated/radarData.mjs";
 import { renderRadar } from "./radar/renderRadar.js";
 
+const ringEmoji = {
+  ADOPT: "✅",
+  TRIAL: "🧪",
+  ASSESS: "🔍",
+  HOLD: "⏸️",
+};
+
+function ringLabel(name) {
+  return `${ringEmoji[name] || ""} ${name}`.trim();
+}
+
 function renderQuadrants() {
   return radarSource.quadrants
     .map((quadrantFile) => {
@@ -17,7 +28,7 @@ function renderQuadrants() {
           return `
             <li class="entry-list__item">
               <a class="entry-list__link" href="${entry.link || "#"}">${entry.label}</a>
-              <span class="entry-list__meta">${ring.name} · ${moved}</span>
+              <span class="entry-list__meta">${ringLabel(ring.name)} · ${moved}</span>
             </li>
           `;
         })
@@ -38,7 +49,7 @@ function renderRings() {
     .map(
       (ring) => `
         <article class="ring-card">
-          <h3 class="ring-card__title" style="--ring-color: ${ring.color}">${ring.name}</h3>
+          <h3 class="ring-card__title" style="--ring-color: ${ring.color}">${ringLabel(ring.name)}</h3>
           <p>${homeContent.ring_descriptions[ring.name] || ""}</p>
         </article>
       `,
