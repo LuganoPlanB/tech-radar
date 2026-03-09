@@ -4,6 +4,8 @@ import * as d3 from "d3";
 // Copyright (c) 2017 Zalando SE
 
 export function renderRadar(svgElement, config) {
+  const font_family = "Inter, \"Segoe UI\", Arial, sans-serif";
+
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
   var seed = 42;
@@ -39,14 +41,18 @@ export function renderRadar(svgElement, config) {
     { x: -675, y: -420 };
 
   const footer_offset =
-    { x: -675, y: 420 };
+    { x: 0, y: 420 };
+  const legend_column_gap = 112;
 
   const legend_offset = [
-    { x: 450, y: 90 },
-    { x: -675, y: 90 },
-    { x: -675, y: -310 },
-    { x: 450, y: -310 }
+    { x: 410, y: 190 },
+    { x: -570, y: 190 },
+    { x: -570, y: -310 },
+    { x: 410, y: -310 }
   ];
+  const radar_center_x = 600;
+  const svg_width = 1260;
+  const svg_height = config.height;
 
   function polar(cartesian) {
     var x = cartesian.x;
@@ -176,33 +182,34 @@ export function renderRadar(svgElement, config) {
     .html("")
     .attr("id", config.svg_id)
     .style("background-color", config.colors.background)
-    .attr("width", config.width)
-    .attr("height", config.height);
+    .attr("width", svg_width)
+    .attr("height", svg_height);
 
   var radar = svg.append("g");
   if ("zoomed_quadrant" in config) {
     svg.attr("viewBox", viewbox(config.zoomed_quadrant));
   } else {
-    radar.attr("transform", translate(config.width / 2, config.height / 2));
+    radar.attr("transform", translate(radar_center_x, config.height / 2));
   }
 
   var grid = radar.append("g");
 
-  // draw grid lines
-  grid.append("line")
-    .attr("x1", 0).attr("y1", -400)
-    .attr("x2", 0).attr("y2", 400)
-    .style("stroke", config.colors.grid)
-    .style("stroke-width", 1);
-  grid.append("line")
-    .attr("x1", -400).attr("y1", 0)
-    .attr("x2", 400).attr("y2", 0)
-    .style("stroke", config.colors.grid)
-    .style("stroke-width", 1);
+  var defs = svg.append("defs");
+  var headingGradient = defs.append("linearGradient")
+    .attr("id", "legendHeadingGradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "0%");
+  headingGradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", config.colors.panel_glow_start || "#f7931a");
+  headingGradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", config.colors.bubble_stroke || "#e15364");
 
   // background color. Usage `.attr("filter", "url(#solid)")`
   // SOURCE: https://stackoverflow.com/a/31013492/2609980
-  var defs = grid.append("defs");
   var filter = defs.append("filter")
     .attr("x", 0)
     .attr("y", 0)
@@ -210,9 +217,24 @@ export function renderRadar(svgElement, config) {
     .attr("height", 1)
     .attr("id", "solid");
   filter.append("feFlood")
-    .attr("flood-color", "rgb(0, 0, 0, 0.8)");
+    .attr("flood-color", config.colors.panel || config.colors.background)
+    .attr("flood-opacity", 0.92);
   filter.append("feComposite")
     .attr("in", "SourceGraphic");
+
+  // draw grid lines
+  grid.append("line")
+    .attr("x1", 0).attr("y1", -400)
+    .attr("x2", 0).attr("y2", 400)
+    .style("stroke", config.colors.grid)
+    .style("stroke-opacity", 0.7)
+    .style("stroke-width", 1);
+  grid.append("line")
+    .attr("x1", -400).attr("y1", 0)
+    .attr("x2", 400).attr("y2", 0)
+    .style("stroke", config.colors.grid)
+    .style("stroke-opacity", 0.7)
+    .style("stroke-width", 1);
 
   // draw rings
   for (var ringLoopIndex = 0; ringLoopIndex < rings.length; ringLoopIndex++) {
@@ -229,8 +251,8 @@ export function renderRadar(svgElement, config) {
         .attr("y", -rings[ringLoopIndex].radius + 62)
         .attr("text-anchor", "middle")
         .style("fill", config.rings[ringLoopIndex].color)
-        .style("opacity", 0.35)
-        .style("font-family", "Arial, Helvetica")
+        .style("opacity", 0.5)
+        .style("font-family", font_family)
         .style("font-size", "42px")
         .style("font-weight", "bold")
         .style("pointer-events", "none")
@@ -239,8 +261,8 @@ export function renderRadar(svgElement, config) {
   }
 
   function legend_transform(quadrant, ring, index = null) {
-    var dx = ring < 2 ? 0 : 140;
-    var dy = (index == null ? -16 : index * 12);
+    var dx = ring < 2 ? 0 : legend_column_gap;
+    var dy = index == null ? -16 : index * 12;
     if (ring % 2 === 1) {
       dy = dy + 36 + segmented[quadrant][ring - 1].length * 12;
     }
@@ -253,26 +275,13 @@ export function renderRadar(svgElement, config) {
   // draw title and legend (only in print layout)
   if (config.print_layout) {
     radar.append("text")
-      .attr("transform", translate(title_offset.x, title_offset.y))
-      .text(config.title)
-      .style("font-family", "Arial, Helvetica")
-      .style("font-size", "30")
-      .style("font-weight", "bold");
-
-    radar
-      .append("text")
-      .attr("transform", translate(title_offset.x, title_offset.y + 20))
-      .text(config.date || "")
-      .style("font-family", "Arial, Helvetica")
-      .style("font-size", "14")
-      .style("fill", "#999");
-
-    radar.append("text")
       .attr("transform", translate(footer_offset.x, footer_offset.y))
       .text("▲ moved up     ▼ moved down")
       .attr("xml:space", "preserve")
-      .style("font-family", "Arial, Helvetica")
-      .style("font-size", "10px");
+      .attr("text-anchor", "middle")
+      .style("font-family", font_family)
+      .style("font-size", "10px")
+      .style("fill", config.colors.text_muted || config.colors.text || "#fff");
 
     var legend = radar.append("g");
     for (var quadrantLoop = 0; quadrantLoop < 4; quadrantLoop++) {
@@ -282,14 +291,15 @@ export function renderRadar(svgElement, config) {
           legend_offset[quadrantLoop].y - 45
         ))
         .text(config.quadrants[quadrantLoop].name)
-        .style("font-family", "Arial, Helvetica")
+        .style("font-family", font_family)
         .style("font-size", "18px")
-        .style("font-weight", "bold");
+        .style("font-weight", "bold")
+        .style("fill", "url(#legendHeadingGradient)");
       for (var legendRing = 0; legendRing < 4; legendRing++) {
         legend.append("text")
           .attr("transform", legend_transform(quadrantLoop, legendRing))
           .text(config.rings[legendRing].name)
-          .style("font-family", "Arial, Helvetica")
+          .style("font-family", font_family)
           .style("font-size", "12px")
           .style("font-weight", "bold")
           .style("fill", config.rings[legendRing].color);
@@ -308,8 +318,9 @@ export function renderRadar(svgElement, config) {
               .attr("class", "legend" + quadrantLoop + legendRing)
               .attr("id", function(d) { return "legendItem" + d.id; })
               .text(function(d) { return d.id + ". " + d.label; })
-              .style("font-family", "Arial, Helvetica")
+              .style("font-family", font_family)
               .style("font-size", "11px")
+              .style("fill", config.colors.text_muted || config.colors.text || "#fff")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
               .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
       }
@@ -329,14 +340,16 @@ export function renderRadar(svgElement, config) {
   bubble.append("rect")
     .attr("rx", 4)
     .attr("ry", 4)
-    .style("fill", "#333");
+    .style("fill", config.colors.bubble_fill || config.colors.panel || "#211d1d")
+    .style("stroke", config.colors.bubble_stroke || "#e15364")
+    .style("stroke-width", 1);
   bubble.append("text")
-    .style("font-family", "sans-serif")
+    .style("font-family", font_family)
     .style("font-size", "10px")
-    .style("fill", "#fff");
+    .style("fill", config.colors.text || "#fff");
   bubble.append("path")
     .attr("d", "M 0,0 10,0 5,8 z")
-    .style("fill", "#333");
+    .style("fill", config.colors.bubble_fill || config.colors.panel || "#211d1d");
 
   function showBubble(d) {
     if (d.active || config.print_layout) {
@@ -366,7 +379,7 @@ export function renderRadar(svgElement, config) {
     var legendItem = svgElement.ownerDocument.getElementById("legendItem" + d.id);
     if (legendItem) {
       legendItem.setAttribute("filter", "url(#solid)");
-      legendItem.setAttribute("fill", "white");
+      legendItem.setAttribute("fill", config.colors.highlight || config.colors.text || "#fff");
     }
   }
 
@@ -419,8 +432,8 @@ export function renderRadar(svgElement, config) {
         .text(blip_text)
         .attr("y", 3)
         .attr("text-anchor", "middle")
-        .style("fill", "#fff")
-        .style("font-family", "Arial, Helvetica")
+        .style("fill", config.colors.text || "#fff")
+        .style("font-family", font_family)
         .style("font-size", function() { return blip_text.length > 2 ? "8px" : "9px"; })
         .style("pointer-events", "none")
         .style("user-select", "none");

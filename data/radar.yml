@@ -2,9 +2,17 @@ title: "Dyne.org Tech Radar — 2019.4"
 width: 1450
 height: 1000
 colors:
-  background: "#fff"
-  grid: "#bbb"
-  inactive: "#ddd"
+  background: "#171717"
+  panel: "#211d1d"
+  panel_glow_start: "#f7931a"
+  panel_glow_end: "#9e1436"
+  grid: "#6f5853"
+  inactive: "#4a2d33"
+  text: "#ffffff"
+  text_muted: "#d6c4c4"
+  bubble_fill: "#211d1d"
+  bubble_stroke: "#e15364"
+  highlight: "#ffc785"
 print_layout: true
 links_in_new_tabs: true
 quadrants:
@@ -19,13 +27,13 @@ quadrants:
 rings:
   - key: "adopt"
     name: "ADOPT"
-    color: "#93c47d"
+    color: "#f7931a"
   - key: "trial"
     name: "TRIAL"
-    color: "#93d2c2"
+    color: "#ffc785"
   - key: "assess"
     name: "ASSESS"
-    color: "#fbdb84"
+    color: "#e15364"
   - key: "hold"
     name: "HOLD"
-    color: "#efafa9"
+    color: "#9e1436"
