@@ -23,7 +23,7 @@
     "build": "npm run sync:data && vite build",
     "preview": "vite preview",
     "start": "npm run dev",
-    "test": "node test/normalizeRadarData.test.mjs",
+    "test": "node test/run-tests.mjs",
     "lint": "npm run lint:js && npm run lint:html",
     "lint:js": "eslint scripts/**/*.mjs src/**/*.{js,mjs} test/**/*.mjs vite.config.js docs/*.js",
     "lint:html": "htmllint index.html docs/*.html"
