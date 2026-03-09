@@ -55,7 +55,7 @@ code {
   border-bottom: var(--border-soft);
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.42)),
-    url("./../planb-website/planb.lugano.ch/wp-content/uploads/2025/07/front_hero_desktop_frame.jpg") center / cover no-repeat,
+    url("/hero/front_hero_desktop_frame.jpg") center / cover no-repeat,
     var(--color-canvas);
 }
 
