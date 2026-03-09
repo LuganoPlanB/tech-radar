@@ -1,19 +1,19 @@
 hero:
-  eyebrow: "Static radar generated from YAML content"
-  title: "Dyne.org Tech Radar — 2019.4"
-  lede: "The radar content now lives in structured YAML files and is rendered into a static Vite site. The chart stays D3-based, but the content model is finally maintainable."
+  eyebrow: "Lugano Plan ₿"
+  title: "Tech Radar"
+  lede: "A living map of tools, protocols, and infrastructure we use."
 sections:
   radar:
-    title: "Technology Landscape"
-    description: "The radar below is rendered from `data/radar.yml` and per-quadrant YAML files."
+    title: "The choice is ours."
+    description: "This radar maps technologies helping to shape a more open, sovereign, and resilient digital future for Lugano."
   rings:
-    title: "Ring Semantics"
-    description: "The semantic model is now explicit in the content layer instead of being embedded inside one HTML file."
+    title: "Signals Of Adoption"
+    description: "The rings show where each technology stands today: trusted, advancing, emerging, or best approached with restraint."
   quadrants:
-    title: "Quadrant Sources"
-    description: "Each quadrant is maintained independently, which keeps edits reviewable and reduces merge conflicts."
+    title: "Key Domains"
+    description: "Each quadrant represents a strategic area of the stack, from foundational infrastructure to data, security, and software tools."
 ring_descriptions:
-  ADOPT: "Technologies we trust broadly and recommend for serious use."
-  TRIAL: "Technologies that already showed value in real work and merit wider use."
-  ASSESS: "Promising technologies worth further research, prototyping, and validation."
-  HOLD: "Technologies we would avoid for new work unless there is a strong reason."
+  ADOPT: "Technologies we trust, use, and consider foundational to the ecosystem today."
+  TRIAL: "Technologies showing clear potential and strong early results in practical adoption."
+  ASSESS: "Technologies worth studying and testing before they earn a broader role in the stack."
+  HOLD: "Technologies we monitor carefully but would avoid introducing into new initiatives for now."
