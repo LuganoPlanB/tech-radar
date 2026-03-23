@@ -1,0 +1,11 @@
+1. Innovation radar
+  - Economy (ex Finance)
+  - Identity 
+  - artificial intelligence 
+  - resilience
+
+2. development radar
+  - infrastructure 
+  - operations
+  - interoperability 
+  - language
