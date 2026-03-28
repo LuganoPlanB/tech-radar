@@ -57,6 +57,15 @@ function expectOptionalInteger(filePath, fieldPath, value) {
   }
 }
 
+function expectOptionalBoolean(filePath, fieldPath, value) {
+  if (value === undefined) {
+    return;
+  }
+  if (typeof value !== "boolean") {
+    throw schemaError(filePath, fieldPath, "must be a boolean when present");
+  }
+}
+
 function listUnknownKeys(value, allowedKeys) {
   return Object.keys(value).filter((key) => !allowedKeys.includes(key));
 }
@@ -184,7 +193,7 @@ export function validateRadarData(filePath, radarData) {
       assertNoUnknownKeys(filePath, entryPath, entry, ["label", "ring", "moved", "active", "link"]);
       expectString(filePath, `${entryPath}.label`, entry.label);
       expectString(filePath, `${entryPath}.ring`, entry.ring);
-      expectBoolean(filePath, `${entryPath}.active`, entry.active);
+      expectOptionalBoolean(filePath, `${entryPath}.active`, entry.active);
       expectOptionalInteger(filePath, `${entryPath}.moved`, entry.moved);
       expectOptionalString(filePath, `${entryPath}.link`, entry.link);
 

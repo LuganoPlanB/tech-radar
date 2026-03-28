@@ -17,9 +17,9 @@ export function normalizeRadarData(radar) {
         label: entry.label,
         quadrant: quadrantIndex,
         ring: ringIndex,
-        active: entry.active,
+        active: entry.active ?? true,
         link: entry.link,
-        moved: entry.moved,
+        moved: entry.moved ?? 0,
       };
     }),
   );

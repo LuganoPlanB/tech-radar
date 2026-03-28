@@ -105,3 +105,40 @@ test("normalizeRadarData rejects unknown ring keys", () => {
     /Unknown ring key: missing/,
   );
 });
+
+test("normalizeRadarData defaults missing moved and active fields", () => {
+  const radar = {
+    title: "Test Radar",
+    width: 100,
+    height: 80,
+    colors: { background: "#000", grid: "#111", inactive: "#222" },
+    print_layout: true,
+    links_in_new_tabs: false,
+    quadrants: [
+      {
+        name: "Languages",
+        entries: [
+          {
+            label: "Go",
+            ring: "adopt",
+            link: "/entries/go",
+          },
+        ],
+      },
+    ],
+    rings: [{ key: "adopt", name: "Adopt", color: "#0f0" }],
+  };
+
+  const normalized = normalizeRadarData(radar);
+
+  assert.deepEqual(normalized.entries, [
+    {
+      label: "Go",
+      quadrant: 0,
+      ring: 0,
+      moved: 0,
+      active: true,
+      link: "/entries/go",
+    },
+  ]);
+});
