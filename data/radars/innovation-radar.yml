@@ -35,44 +35,56 @@ quadrants:
       - label: LVGA
         ring: adopt
         link: https://my.lugano.ch/en/pagare-in-lvga-lugano/
+        desc: Lugano's cryptocurrency to reward who buys and sells in the city
       - label: Bitcoin
         ring: adopt
         link: https://bitcoin.org
+        desc: The one and only: Bitcoin digital asset
       - label: Taler
         ring: assess
         link: https://www.taler.net
+        desc: Privacy-friendly payment system, fast and easy, free software
       - label: SwissLedger
         ring: adopt
         link: https://ledger.swiss
+        desc: The Swiss institutional blockchain born in Lugano
       - label: Arkade
         ring: trial
         link: https://arkadeos.com
+        desc: Programmable tools to build, scale, and settle financial products on Bitcoin.
       - label: Lightning
         ring: trial
         link: https://lightning.network
+        desc: Scalable, Instant Bitcoin/Blockchain Transactions
       - label: Twint
         ring: hold
         link: https://twint.ch
+        desc: Switzerland’s legacy payment apps, one for each bank...
       - label: iDEAL
         ring: hold
         link: https://ideal.nl
+        desc: Holland's legacy online payment method, being replaced...
   - name: Identity
     entries:
       - label: MyLugano
         ring: adopt
         link: https://my.lugano.ch/
+        desc: The app for everyone who is living and working in Lugano
       - label: SD-BLS
         ring: assess
         moved: 1
         link: https://arxiv.org/abs/2406.19035
+        desc: Privacy Preserving Verifiable Credentials with Threshold Revocation
       - label: Longfellow-ZK
         ring: assess
         moved: 1
         link: https://news.dyne.org/longfellow-zero-knowledge-google-zk/
+        desc: Zero-knowledge circuits, fast and backward compatible
       - label: BBS
         ring: trial
         moved: -1
         link: https://news.dyne.org/benchmark-of-the-bbs-signature-scheme-v06/
+        desc: Zero-knowledge digital signature protocol
       - label: W3C-VC
         ring: trial
         desc: Verifiable Credentials Data Model v2.0, W3C Recommendation
@@ -81,16 +93,20 @@ quadrants:
       - label: Gordian Envelope
         ring: assess
         moved: 1
+        desc: Smart document specification by Blokchain Commons
         link: https://developer.blockchaincommons.com/envelope/
       - label: did:dyne
         ring: trial
         link: https://did.dyne.org
+        desc: Dyne.org foundation Decentralized Identifiers
       - label: SD-JWT
         ring: hold
         moved: -1
+        desc: Selective Disclosure in Javascript Web Tokens
         link: https://hub.ebsi.eu/vc-framework/did/selective-disclosure-sd-jwt
       - label: EUDI
         ring: hold
+        desc: European Digital Identity Standard (eIDAS-2)
         link: https://news.dyne.org/the-problems-of-european-digital-identity/
   - name: AI
     entries:
