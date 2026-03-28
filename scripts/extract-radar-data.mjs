@@ -5,7 +5,10 @@ import vm from "node:vm";
 const repoRoot = process.cwd();
 const sourcePath = path.join(repoRoot, "docs", "index.html");
 const dataDir = path.join(repoRoot, "data");
-const quadrantsDir = path.join(dataDir, "quadrants");
+const radarsDir = path.join(dataDir, "radars");
+const defaultRadarKey = "innovation-radar";
+const defaultRadarDir = path.join(radarsDir, defaultRadarKey);
+const quadrantsDir = path.join(defaultRadarDir, "quadrants");
 
 const quadrantKeys = [
   "languages",
@@ -114,8 +117,21 @@ function writeYaml(filePath, data) {
 function main() {
   const config = readLegacyConfig();
   const usedKeys = new Set();
+  const homePath = path.join(dataDir, "home.yml");
+  const existingHome = fs.existsSync(homePath) ? readYaml(homePath) : {};
 
+  ensureDir(radarsDir);
   ensureDir(quadrantsDir);
+
+  writeYaml(homePath, {
+    ...existingHome,
+    default_radar: defaultRadarKey,
+    radars: [
+      { key: "innovation-radar", label: "Innovation Radar" },
+      { key: "development-radar", label: "Development Radar" },
+      { key: "business-radar", label: "Business Radar" },
+    ],
+  });
 
   const radarData = {
     title: config.title,
@@ -135,7 +151,7 @@ function main() {
     })),
   };
 
-  writeYaml(path.join(dataDir, "radar.yml"), radarData);
+  writeYaml(path.join(defaultRadarDir, "radar.yml"), radarData);
 
   config.quadrants.forEach((quadrant, quadrantIndex) => {
     const entries = config.entries

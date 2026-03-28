@@ -1,0 +1,39 @@
+title: "Lugano Plan ₿ Business Radar"
+width: 1450
+height: 1000
+colors:
+  background: "#171717"
+  panel: "#211d1d"
+  panel_glow_start: "#f7931a"
+  panel_glow_end: "#9e1436"
+  grid: "#6f5853"
+  inactive: "#4a2d33"
+  text: "#ffffff"
+  text_muted: "#d6c4c4"
+  bubble_fill: "#211d1d"
+  bubble_stroke: "#e15364"
+  highlight: "#ffc785"
+print_layout: true
+links_in_new_tabs: true
+quadrants:
+  - key: "languages"
+    name: "Languages"
+  - key: "infra_hosting"
+    name: "Infra / Hosting"
+  - key: "network_security"
+    name: "Network / Security"
+  - key: "data_management"
+    name: "Data Management"
+rings:
+  - key: "adopt"
+    name: "ADOPT"
+    color: "#f7931a"
+  - key: "trial"
+    name: "TRIAL"
+    color: "#ffc785"
+  - key: "assess"
+    name: "ASSESS"
+    color: "#e15364"
+  - key: "hold"
+    name: "HOLD"
+    color: "#9e1436"

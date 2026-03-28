@@ -1,12 +1,12 @@
 # Dyne.org Tech Radar
 
-This repository now builds the radar as a static Vite site backed by YAML content.
+This repository now builds a multi-radar static Vite site backed by YAML content.
 
 ## Repository Structure
 
-- `data/radar.yml`: radar-wide metadata, colors, rings, and quadrants
 - `data/home.yml`: homepage copy, section labels, and ring descriptions
-- `data/quadrants/*.yml`: quadrant-specific entries
+- `data/radars/<radar-key>/radar.yml`: radar-wide metadata, colors, rings, and quadrants
+- `data/radars/<radar-key>/quadrants/*.yml`: quadrant-specific entries for that radar
 - `src/radar/renderRadar.js`: D3 renderer adapted from the original static implementation
 - `src/radar/normalizeRadarData.mjs`: transforms symbolic YAML content into the renderer format
 - `scripts/generate-radar-data-module.mjs`: build-time data generation from YAML
@@ -29,7 +29,7 @@ npm run dev
 While the dev server is running:
 
 - changes in `src/` hot reload immediately
-- changes in `data/home.yml`, `data/radar.yml`, and `data/quadrants/*.yml` regenerate the derived module and trigger a full page reload
+- changes in `data/**/*.yml` regenerate the derived module and trigger a full page reload
 
 Build the static site:
 
@@ -53,9 +53,9 @@ npm run lint
 
 The source of truth for radar content is YAML.
 
-- Edit `data/radar.yml` for global metadata.
+- Edit `data/radars/<radar-key>/radar.yml` for per-radar metadata.
 - Edit `data/home.yml` for homepage copy.
-- Edit `data/quadrants/*.yml` for entries.
+- Edit `data/radars/<radar-key>/quadrants/*.yml` for entries.
 - `npm run sync:data` regenerates the JS module consumed by the app.
 - `npm run dev` and `npm run build` run the data sync automatically.
 

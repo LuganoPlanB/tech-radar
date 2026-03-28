@@ -171,6 +171,47 @@ h3 {
   padding: 16px 0 8px;
 }
 
+.radar-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.radar-tab {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-soft);
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.radar-tab:hover {
+  border-color: rgba(247, 147, 26, 0.45);
+  color: var(--color-text);
+}
+
+.radar-tab--active {
+  border-color: rgba(247, 147, 26, 0.55);
+  background: rgba(247, 147, 26, 0.14);
+  color: var(--color-text);
+}
+
+.radar-context {
+  margin: 0 0 4px;
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+}
+
 .radar-stage svg {
   display: block;
   width: auto;
@@ -270,6 +311,15 @@ h3 {
   .info-grid {
     padding: 20px;
     border-radius: 22px;
+  }
+
+  .radar-tabs {
+    gap: 10px;
+  }
+
+  .radar-tab {
+    width: 100%;
+    justify-content: center;
   }
 
   .radar-panel:first-child {

@@ -11,10 +11,7 @@ function radarDataWatcher() {
   return {
     name: "radar-data-watcher",
     configureServer(server) {
-      const watchedPatterns = [
-        path.join(dataRoot, "radar.yml"),
-        path.join(dataRoot, "quadrants", "*.yml"),
-      ];
+      const watchedPatterns = [path.join(dataRoot, "**", "*.yml")];
 
       server.watcher.add(watchedPatterns);
 

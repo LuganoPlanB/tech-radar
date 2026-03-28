@@ -106,7 +106,7 @@ Important implications from the current config:
 
 Prefer the following order:
 
-1. Understand whether the request is a content change in `docs/index.html`, a behavior change in `docs/radar.js`, or a presentation tweak in `docs/radar.css`.
+1. Understand whether the request is a content change in `data/` or `docs/index.html`, a behavior change in `src/` or `docs/radar.js`, or a presentation tweak in `src/style.css` or `docs/radar.css`.
 2. Make the minimum direct edit.
 3. Run the relevant lint command.
 4. If behavior changed, sanity-check the page with `npm start` when feasible.
@@ -124,3 +124,4 @@ Prefer the following order:
 - The local dev server is `browser-sync docs -w`.
 - The page currently loads D3 from `https://d3js.org/d3.v4.min.js`.
 - The maintainer listed in `MAINTAINERS` is Denis Roio.
+- The Vite app source of truth is now `data/home.yml` plus `data/radars/<radar-key>/`.

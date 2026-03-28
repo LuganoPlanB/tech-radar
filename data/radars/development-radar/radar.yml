@@ -1,4 +1,4 @@
-title: "Lugano Plan ₿ Tech Radar"
+title: "Lugano Plan ₿ Development Radar"
 width: 1450
 height: 1000
 colors:
@@ -17,13 +17,13 @@ print_layout: true
 links_in_new_tabs: true
 quadrants:
   - key: "languages"
-    name: "Languages"
+    name: "Infrastructure"
   - key: "infra_hosting"
-    name: "Infra / Hosting"
+    name: "Operations"
   - key: "network_security"
-    name: "Network / Security"
+    name: "Interoperability"
   - key: "data_management"
-    name: "Data Management"
+    name: "Language"
 rings:
   - key: "adopt"
     name: "ADOPT"
