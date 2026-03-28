@@ -39,7 +39,7 @@ quadrants:
       - label: Bitcoin
         ring: adopt
         link: https://bitcoin.org
-        desc: The one and only: Bitcoin digital asset
+        desc: The one and only Bitcoin digital asset
       - label: Taler
         ring: assess
         link: https://www.taler.net
@@ -64,6 +64,7 @@ quadrants:
         ring: hold
         link: https://ideal.nl
         desc: Holland's legacy online payment method, being replaced...
+
   - name: Identity
     entries:
       - label: MyLugano
@@ -108,6 +109,18 @@ quadrants:
         ring: hold
         desc: European Digital Identity Standard (eIDAS-2)
         link: https://news.dyne.org/the-problems-of-european-digital-identity/
+      - label: DIDroom
+        ring: trial
+        desc: Open-source customizable wallet, issuer dashboard and verifier solution
+        link: https://didroom.com
+      - label: Credimi
+        ring: trial
+        desc: Conformance, Interoperability and Marketplace for identity solutions
+        link: https://credimi.io
+      - label: Swiyu
+        ring: trial
+        desc: Wallet and Trust Infrastructure by the Swiss Federal Government
+        link: https://www.eid.admin.ch/en/swiyu-coming-soon-e
   - name: AI
     entries:
       - label: QVAC
@@ -144,5 +157,6 @@ quadrants:
         moved: +1
         link: https://gitlab.com/IsolatedOctopi/nvidia_greenboost
         desc: 3-Tier GPU Memory Extension for Linux
+
   - name: Resilience
     entries: []

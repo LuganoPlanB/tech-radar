@@ -29,12 +29,25 @@ function entryLinkAttributes(radar, link) {
   return " target=\"_blank\" rel=\"noreferrer\"";
 }
 
+function compareEntriesByRing(radar, left, right) {
+  const ringIndexByKey = new Map(radar.source.rings.map((ring, index) => [ring.key, index]));
+  const leftRingIndex = ringIndexByKey.get(left.ring) ?? Number.MAX_SAFE_INTEGER;
+  const rightRingIndex = ringIndexByKey.get(right.ring) ?? Number.MAX_SAFE_INTEGER;
+
+  if (leftRingIndex !== rightRingIndex) {
+    return leftRingIndex - rightRingIndex;
+  }
+
+  return left.label.localeCompare(right.label);
+}
+
 function renderQuadrants(radar) {
   return quadrantDisplayOrder
     .map((quadrantIndex) => radar.source.quadrants[quadrantIndex])
     .filter(Boolean)
     .map((quadrant) => {
-      const entries = (quadrant.entries || [])
+      const entries = [...(quadrant.entries || [])]
+        .sort((left, right) => compareEntriesByRing(radar, left, right))
         .map((entry) => {
           const ring = radar.source.rings.find((item) => item.key === entry.ring);
           const description = entry.desc || "";
