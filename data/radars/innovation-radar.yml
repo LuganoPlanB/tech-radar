@@ -65,24 +65,30 @@ quadrants:
         link: https://my.lugano.ch/
       - label: SD-BLS
         ring: assess
+        moved: +1
         link: https://arxiv.org/abs/2406.19035
       - label: Longfellow-ZK
         ring: assess
+        moved: +1
         link: https://news.dyne.org/longfellow-zero-knowledge-google-zk/
       - label: BBS
         ring: trial
+        moved: -1
         link: https://news.dyne.org/benchmark-of-the-bbs-signature-scheme-v06/
       - label: W3C-VC
         ring: trial
+        moved: +1
         link: https://www.w3.org/TR/vc-data-model-2.0/
       - label: Gordian Envelope
         ring: assess
+        moved: +1
         link: https://developer.blockchaincommons.com/envelope/
       - label: did:dyne
         ring: trial
         link: https://did.dyne.org
       - label: SD-JWT
         ring: hold
+        moved: -1
         link: https://hub.ebsi.eu/vc-framework/did/selective-disclosure-sd-jwt
       - label: EUDI
         ring: hold
