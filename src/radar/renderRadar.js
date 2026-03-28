@@ -328,7 +328,7 @@ export function renderRadar(svgElement, config) {
               .attr("transform", function(d, i) { return legend_transform(quadrantLoop, legendRing, i); })
               .attr("class", "legend" + quadrantLoop + legendRing)
               .attr("id", function(d) { return "legendItem" + d.id; })
-              .text(function(d) { return d.id + ". " + d.label; })
+              .text(function(d) { return d.label; })
               .style("font-family", font_family)
               .style("font-size", "11px")
               .style("fill", config.colors.text_muted || config.colors.text || "#fff")

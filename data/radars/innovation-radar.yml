@@ -78,6 +78,42 @@ quadrants:
         ring: trial
         link: http://keet.io
         desc: P2P chat with no middlemen, no metadata, no surveillance
+      - label: Matrix
+        ring: adopt
+        desc: Open network for secure, decentralised communication
+        link: https://matrix.org
+      - label: Telegram
+        ring: hold
+        desc: Messaging app with a focus on speed and security
+        link: https://telegram.org
+      - label: De-google-ify
+        ring: assess
+        link: https://degooglisons-internet.org
+        desc: trusted services that respect our privacy
+      - label: Cryptpad
+        ring: adopt
+        link: https://cryptpad.fr
+        desc: End-to-end encrypted and open-source collaboration suite
+      - label: Mattermost
+        ring: hold
+        link: https://mattermost.com
+        desc: Secure chat centralized but on-premises
+      - label: OpenStreetMap
+        ring: adopt
+        link: https://www.openstreetmap.org
+        desc: Map of the world created by people like you and free to use
+      - label: Immich
+        ring: trial
+        link: https://immich.app
+        desc: Self-hosted photo and video management solution
+      - label: PeerTube
+        ring: adopt
+        link: https://joinpeertube.org
+        desc: Alternative to Big Tech for sharing online videos
+      - label: GNU/Linux
+        ring: adopt
+        link: https://distrowatch.com
+        desc: Put the fun back into computing and run an OS you own
 
   - name: Economy
     entries:
@@ -89,7 +125,11 @@ quadrants:
         ring: adopt
         link: https://bitcoin.org
         desc: The one and only Bitcoin digital asset
-      - label: Taler
+      - label: Ethereum
+        ring: trial
+        link: https://ethereum.org/developers/docs/evm/
+        desc: Decentralized VM that executes code consistently and securely
+      - label: GNU Taler
         ring: assess
         link: https://www.taler.net
         desc: Privacy-friendly payment system, fast and easy, free software
@@ -170,3 +210,7 @@ quadrants:
         ring: trial
         desc: Wallet and Trust Infrastructure by the Swiss Federal Government
         link: https://www.eid.admin.ch/en/swiyu-coming-soon-e
+      - label: X.509
+        ring: hold
+        desc: Legacy PKI Certificate and Revocation Format for the Internet
+        link: https://datatracker.ietf.org/doc/rfc5280/
