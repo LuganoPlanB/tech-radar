@@ -15,6 +15,7 @@ function ringLabel(name) {
 }
 
 const radarByKey = new Map(radarCollection.map((radar) => [radar.key, radar]));
+const quadrantDisplayOrder = [2, 3, 1, 0];
 
 function entryLinkAttributes(radar, link) {
   if (!link || link === "#") {
@@ -29,7 +30,9 @@ function entryLinkAttributes(radar, link) {
 }
 
 function renderQuadrants(radar) {
-  return radar.source.quadrants
+  return quadrantDisplayOrder
+    .map((quadrantIndex) => radar.source.quadrants[quadrantIndex])
+    .filter(Boolean)
     .map((quadrant) => {
       const entries = (quadrant.entries || [])
         .map((entry) => {

@@ -262,7 +262,7 @@ export function renderRadar(svgElement, config) {
         .attr("y", -rings[ringLoopIndex].radius + 62)
         .attr("text-anchor", "middle")
         .style("fill", config.rings[ringLoopIndex].color)
-        .style("opacity", 0.5)
+        .style("opacity", 0.28)
         .style("font-family", font_family)
         .style("font-size", "42px")
         .style("font-weight", "bold")

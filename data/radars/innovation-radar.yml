@@ -96,6 +96,7 @@ quadrants:
     entries:
       - label: QVAC
         ring: assess
+        moved: +1
         link: https://qvac.tether.io
         desc: A new local AI paradigm by Tether
       - label: Claude
@@ -124,6 +125,7 @@ quadrants:
         desc: Mistral AI, a French artificial intelligence startup
       - label: GreenBoost
         ring: trial
+        moved: +1
         link: https://gitlab.com/IsolatedOctopi/nvidia_greenboost
         desc: 3-Tier GPU Memory Extension for Linux
   - name: Resilience
