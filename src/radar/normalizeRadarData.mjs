@@ -15,6 +15,7 @@ export function normalizeRadarData(radar) {
 
       return {
         label: entry.label,
+        desc: entry.desc || "",
         quadrant: quadrantIndex,
         ring: ringIndex,
         active: entry.active ?? true,

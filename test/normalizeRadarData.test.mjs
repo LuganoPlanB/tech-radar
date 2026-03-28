@@ -57,6 +57,7 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
   ]);
   assert.deepEqual(normalized.entries, [
     {
+      desc: "",
       label: "Go",
       quadrant: 0,
       ring: 0,
@@ -65,6 +66,7 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
       link: "/entries/go",
     },
     {
+      desc: "",
       label: "Nginx",
       quadrant: 1,
       ring: 1,
@@ -133,6 +135,7 @@ test("normalizeRadarData defaults missing moved and active fields", () => {
 
   assert.deepEqual(normalized.entries, [
     {
+      desc: "",
       label: "Go",
       quadrant: 0,
       ring: 0,

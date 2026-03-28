@@ -5,6 +5,7 @@ import * as d3 from "d3";
 
 export function renderRadar(svgElement, config) {
   const font_family = "Inter, \"Segoe UI\", Arial, sans-serif";
+  const bubble_max_width = 220;
   const ring_emoji = {
     ADOPT: "✅",
     TRIAL: "🧪",
@@ -354,28 +355,100 @@ export function renderRadar(svgElement, config) {
     .style("stroke", config.colors.bubble_stroke || "#e15364")
     .style("stroke-width", 1);
   bubble.append("text")
+    .attr("class", "bubble-title")
     .style("font-family", font_family)
-    .style("font-size", "10px")
+    .style("font-size", "16px")
+    .style("font-weight", "bold")
     .style("fill", config.colors.text || "#fff");
+  bubble.append("text")
+    .attr("class", "bubble-desc")
+    .style("font-family", font_family)
+    .style("font-size", "13px")
+    .style("fill", config.colors.text_muted || config.colors.text || "#fff");
   bubble.append("path")
     .attr("d", "M 0,0 10,0 5,8 z")
     .style("fill", config.colors.bubble_fill || config.colors.panel || "#211d1d");
 
+  function wrapBubbleText(textSelection, text, width, lineHeight) {
+    textSelection.text(null);
+
+    if (!text) {
+      return [];
+    }
+
+    var words = text.split(/\s+/).filter(Boolean);
+    var lines = [];
+    var line = [];
+
+    for (var wordIndex = 0; wordIndex < words.length; wordIndex++) {
+      line.push(words[wordIndex]);
+      textSelection.text(line.join(" "));
+
+      if (textSelection.node().getComputedTextLength() > width && line.length > 1) {
+        line.pop();
+        lines.push(line.join(" "));
+        line = [words[wordIndex]];
+        textSelection.text(line.join(" "));
+      }
+    }
+
+    if (line.length > 0) {
+      lines.push(line.join(" "));
+    }
+
+    textSelection.text(null);
+    for (var lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+      textSelection.append("tspan")
+        .attr("x", 0)
+        .attr("dy", lineIndex === 0 ? 0 : lineHeight)
+        .text(lines[lineIndex]);
+    }
+
+    return lines;
+  }
+
   function showBubble(d) {
     if (d.active || config.print_layout) {
-      var tooltip = d3.select("#bubble text")
-        .text(d.label);
-      var bbox = tooltip.node().getBBox();
+      var bubbleSelection = d3.select("#bubble");
+      var title = bubbleSelection.select(".bubble-title")
+        .attr("x", 0)
+        .attr("y", 0)
+        .text(d.label)
+        .style("paint-order", "stroke")
+        .style("stroke", "rgba(0, 0, 0, 0.55)")
+        .style("stroke-width", "3px")
+        .style("stroke-linejoin", "round");
+      var description = bubbleSelection.select(".bubble-desc")
+        .attr("x", 0)
+        .attr("y", 22);
+
+      wrapBubbleText(description, d.desc || "", bubble_max_width, 14);
+
+      var titleBox = title.node().getBBox();
+      var descBox = description.node().getBBox();
+      var hasDescription = descBox.width > 0 && descBox.height > 0;
+      var contentWidth = Math.max(titleBox.width, descBox.width);
+      var contentHeight = titleBox.height + (hasDescription ? descBox.height + 8 : 0);
+
+      if (hasDescription) {
+        description.attr("y", titleBox.height + 8);
+      }
+
+      var bbox = {
+        width: contentWidth,
+        height: contentHeight
+      };
+
       d3.select("#bubble")
-        .attr("transform", translate(d.x - bbox.width / 2, d.y - 16))
+        .attr("transform", translate(d.x - bbox.width / 2, d.y - bbox.height - 18))
         .style("opacity", 0.8);
       d3.select("#bubble rect")
-        .attr("x", -5)
-        .attr("y", -bbox.height)
-        .attr("width", bbox.width + 10)
-        .attr("height", bbox.height + 4);
+        .attr("x", -10)
+        .attr("y", -4)
+        .attr("width", bbox.width + 20)
+        .attr("height", bbox.height + 12);
       d3.select("#bubble path")
-        .attr("transform", translate(bbox.width / 2 - 5, 3));
+        .attr("transform", translate(bbox.width / 2 - 5, bbox.height + 8));
     }
   }
 

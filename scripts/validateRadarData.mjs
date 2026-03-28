@@ -190,9 +190,10 @@ export function validateRadarData(filePath, radarData) {
     quadrant.entries.forEach((entry, entryIndex) => {
       const entryPath = `${quadrantPath}.entries[${entryIndex}]`;
       expectPlainObject(filePath, entryPath, entry);
-      assertNoUnknownKeys(filePath, entryPath, entry, ["label", "ring", "moved", "active", "link"]);
+      assertNoUnknownKeys(filePath, entryPath, entry, ["label", "desc", "ring", "moved", "active", "link"]);
       expectString(filePath, `${entryPath}.label`, entry.label);
       expectString(filePath, `${entryPath}.ring`, entry.ring);
+      expectOptionalString(filePath, `${entryPath}.desc`, entry.desc);
       expectOptionalBoolean(filePath, `${entryPath}.active`, entry.active);
       expectOptionalInteger(filePath, `${entryPath}.moved`, entry.moved);
       expectOptionalString(filePath, `${entryPath}.link`, entry.link);

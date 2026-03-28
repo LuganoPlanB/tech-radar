@@ -34,14 +34,12 @@ function renderQuadrants(radar) {
       const entries = (quadrant.entries || [])
         .map((entry) => {
           const ring = radar.source.rings.find((item) => item.key === entry.ring);
-          const moved =
-            entry.moved > 0 ? "Moved in" :
-            entry.moved < 0 ? "Moved out" :
-            "No change";
+          const description = entry.desc || "";
+          const meta = [ringLabel(ring.name), description].filter(Boolean).join(" · ");
           return `
             <li class="entry-list__item">
               <a class="entry-list__link" href="${entry.link || "#"}"${entryLinkAttributes(radar, entry.link)}>${entry.label}</a>
-              <span class="entry-list__meta">${ringLabel(ring.name)} · ${moved}</span>
+              <span class="entry-list__meta">${meta}</span>
             </li>
           `;
         })

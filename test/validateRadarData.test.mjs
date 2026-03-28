@@ -119,7 +119,7 @@ test("validateRadarData allows moved and active to be omitted", () => {
       links_in_new_tabs: false,
       rings: [{ key: "adopt", name: "ADOPT", color: "#fff" }],
       quadrants: [
-        { name: "One", entries: [{ label: "Okay", ring: "adopt" }] },
+        { name: "One", entries: [{ label: "Okay", desc: "Description", ring: "adopt" }] },
         { name: "Two", entries: [] },
         { name: "Three", entries: [] },
         { name: "Four", entries: [] },

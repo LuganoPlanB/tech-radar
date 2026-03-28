@@ -30,7 +30,6 @@ rings:
     name: HOLD
     color: "#9e1436"
 quadrants:
-
   - name: Economy
     entries:
       - label: LVGA
@@ -57,7 +56,6 @@ quadrants:
       - label: iDEAL
         ring: hold
         link: https://ideal.nl
-
   - name: Identity
     entries:
       - label: MyLugano
@@ -65,11 +63,11 @@ quadrants:
         link: https://my.lugano.ch/
       - label: SD-BLS
         ring: assess
-        moved: +1
+        moved: 1
         link: https://arxiv.org/abs/2406.19035
       - label: Longfellow-ZK
         ring: assess
-        moved: +1
+        moved: 1
         link: https://news.dyne.org/longfellow-zero-knowledge-google-zk/
       - label: BBS
         ring: trial
@@ -77,11 +75,12 @@ quadrants:
         link: https://news.dyne.org/benchmark-of-the-bbs-signature-scheme-v06/
       - label: W3C-VC
         ring: trial
-        moved: +1
+        desc: Verifiable Credentials Data Model v2.0, W3C Recommendation
+        moved: 1
         link: https://www.w3.org/TR/vc-data-model-2.0/
       - label: Gordian Envelope
         ring: assess
-        moved: +1
+        moved: 1
         link: https://developer.blockchaincommons.com/envelope/
       - label: did:dyne
         ring: trial
@@ -93,33 +92,39 @@ quadrants:
       - label: EUDI
         ring: hold
         link: https://news.dyne.org/the-problems-of-european-digital-identity/
-
   - name: AI
     entries:
       - label: QVAC
         ring: assess
         link: https://qvac.tether.io
+        desc: A new local AI paradigm by Tether
       - label: Claude
         ring: hold
         link: https://claude.ai
+        desc: Claude online AI service
       - label: Codex
         ring: hold
         link: https://chatgpt.com/codex/
+        desc: OpenAI online AI coder companion
       - label: Copilot
         ring: hold
         link: https://copilot.ai
+        desc: Microsoft AI companion
       - label: ONNX
         ring: trial
         link: https://onnx.ai
+        desc: The open standard for machine learning interoperability
       - label: OpenVINO
         ring: trial
         link: http://openvino.ai
+        desc: Open source AI toolkit for Intel NPUs
       - label: Mistral
         ring: hold
         link: https://mistral.ai
+        desc: Mistral AI, a French artificial intelligence startup
       - label: GreenBoost
         ring: trial
         link: https://gitlab.com/IsolatedOctopi/nvidia_greenboost
-
+        desc: 3-Tier GPU Memory Extension for Linux
   - name: Resilience
     entries: []
