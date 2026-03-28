@@ -3,6 +3,7 @@ import path from "node:path";
 import { parse } from "yaml";
 
 import { normalizeRadarData } from "../src/radar/normalizeRadarData.mjs";
+import { validateHomeData, validateRadarData, validateRadarDirectory } from "./validateRadarData.mjs";
 
 const repoRoot = process.cwd();
 const dataDir = path.join(repoRoot, "data");
@@ -22,10 +23,18 @@ function listRadarFiles() {
 }
 
 export function generateRadarDataModule() {
-  const home = readYaml(path.join(dataDir, "home.yml"));
-  const radarCollection = listRadarFiles().map((filename) => {
-    const radar = readYaml(path.join(radarsDir, filename));
+  const homePath = path.join(dataDir, "home.yml");
+  const home = readYaml(homePath);
+  const radarFiles = listRadarFiles();
+
+  validateHomeData(homePath, home);
+  validateRadarDirectory(homePath, home, radarFiles.map((filename) => path.join(radarsDir, filename)));
+
+  const radarCollection = radarFiles.map((filename) => {
+    const radarPath = path.join(radarsDir, filename);
+    const radar = readYaml(radarPath);
     const key = path.basename(filename, ".yml");
+    validateRadarData(radarPath, radar);
 
     return {
       key,

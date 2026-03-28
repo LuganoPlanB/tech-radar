@@ -48,6 +48,8 @@ Run lint checks:
 npm run lint
 ```
 
+YAML files are schema-validated during data generation and in the test suite. Invalid files fail with field-specific messages such as `data/radars/business-radar.yml:quadrants[1].entries[3].ring ...`.
+
 ## Content Workflow
 
 The source of truth for radar content is YAML.
