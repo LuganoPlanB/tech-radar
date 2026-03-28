@@ -11,7 +11,7 @@ sections:
     title: "Signals Of Adoption"
     description: "The rings show where each technology stands today: trusted, advancing, emerging, or best approached with restraint."
   quadrants:
-    title: "Key Domains"
+    title: "Objects on Quadrants"
     description: "Each quadrant represents a strategic area of the stack, from foundational infrastructure to data, security, and software tools."
 ring_descriptions:
   ADOPT: "Technologies we trust, use, and consider foundational to the ecosystem today."
