@@ -129,6 +129,14 @@ document.querySelector("#app").innerHTML = `
     </header>
 
     <main class="content">
+      <section class="info-grid">
+        <div class="section-heading">
+          <h2>${homeContent.sections.rings.title}</h2>
+          <p>${homeContent.sections.rings.description}</p>
+        </div>
+        <div class="ring-grid" id="ring-grid"></div>
+      </section>
+
       <section class="radar-panel">
         <div class="section-heading">
           <h2>${homeContent.sections.radar.title}</h2>
@@ -141,14 +149,6 @@ document.querySelector("#app").innerHTML = `
         <div class="radar-stage">
           <svg id="radar" aria-label="Technology radar"></svg>
         </div>
-      </section>
-
-      <section class="info-grid">
-        <div class="section-heading">
-          <h2>${homeContent.sections.rings.title}</h2>
-          <p>${homeContent.sections.rings.description}</p>
-        </div>
-        <div class="ring-grid" id="ring-grid"></div>
       </section>
 
       <section class="info-grid">

@@ -5,10 +5,10 @@ hero:
   lede: "A living map of tools, protocols, and infrastructure across innovation, development, and business."
 sections:
   radar:
-    title: "The choice is ours."
+    title: "The Choice is Ours"
     description: "Switch between radars to explore the technologies helping to shape a more open, sovereign, and resilient digital future for Lugano."
   rings:
-    title: "Signals Of Adoption"
+    title: "Signals of Adoption"
     description: "The rings show where each technology stands today: trusted, advancing, emerging, or best approached with restraint."
   quadrants:
     title: "Objects on Quadrants"
