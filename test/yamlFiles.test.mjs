@@ -40,9 +40,13 @@ test("all YAML files under data/ match the expected schema", () => {
   const homePath = path.join(dataDir, "home.yml");
   const homeData = parse(fs.readFileSync(homePath, "utf8"));
   const radarFiles = listYamlFiles(path.join(dataDir, "radars"));
+  const radars = radarFiles.map((filePath) => ({
+    key: path.basename(filePath, ".yml"),
+    data: parse(fs.readFileSync(filePath, "utf8")),
+  }));
 
   validateHomeData(homePath, homeData);
-  validateRadarDirectory(homePath, homeData, radarFiles);
+  validateRadarDirectory(homePath, homeData, radars);
 
   radarFiles.forEach((filePath) => {
     validateRadarData(filePath, parse(fs.readFileSync(filePath, "utf8")));

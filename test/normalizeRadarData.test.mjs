@@ -17,7 +17,7 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
     links_in_new_tabs: true,
     quadrants: [
       {
-        name: "Languages",
+        name: "Top Left",
         entries: [
           {
             label: "Go",
@@ -29,7 +29,7 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
         ],
       },
       {
-        name: "Infra",
+        name: "Top Right",
         entries: [
           {
             label: "Nginx",
@@ -39,6 +39,14 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
             link: "https://nginx.org",
           },
         ],
+      },
+      {
+        name: "Bottom Left",
+        entries: [],
+      },
+      {
+        name: "Bottom Right",
+        entries: [],
       },
     ],
     rings: [
@@ -50,7 +58,12 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
   const normalized = normalizeRadarData(radar);
 
   assert.equal(normalized.title, "Test Radar");
-  assert.deepEqual(normalized.quadrants, [{ name: "Languages" }, { name: "Infra" }]);
+  assert.deepEqual(normalized.quadrants, [
+    { name: "Bottom Right" },
+    { name: "Bottom Left" },
+    { name: "Top Left" },
+    { name: "Top Right" },
+  ]);
   assert.deepEqual(normalized.rings, [
     { name: "Adopt", color: "#0f0" },
     { name: "Hold", color: "#f00" },
@@ -59,7 +72,7 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
     {
       desc: "",
       label: "Go",
-      quadrant: 0,
+      quadrant: 2,
       ring: 0,
       moved: 1,
       active: true,
@@ -68,7 +81,7 @@ test("normalizeRadarData maps quadrant order and ring keys to renderer indices",
     {
       desc: "",
       label: "Nginx",
-      quadrant: 1,
+      quadrant: 3,
       ring: 1,
       moved: -1,
       active: true,
@@ -87,7 +100,7 @@ test("normalizeRadarData rejects unknown ring keys", () => {
     links_in_new_tabs: false,
     quadrants: [
       {
-        name: "Languages",
+        name: "Top Left",
         entries: [
           {
             label: "Go",
@@ -98,6 +111,9 @@ test("normalizeRadarData rejects unknown ring keys", () => {
           },
         ],
       },
+      { name: "Top Right", entries: [] },
+      { name: "Bottom Left", entries: [] },
+      { name: "Bottom Right", entries: [] },
     ],
     rings: [{ key: "adopt", name: "Adopt", color: "#0f0" }],
   };
@@ -118,7 +134,7 @@ test("normalizeRadarData defaults missing moved and active fields", () => {
     links_in_new_tabs: false,
     quadrants: [
       {
-        name: "Languages",
+        name: "Top Left",
         entries: [
           {
             label: "Go",
@@ -127,6 +143,9 @@ test("normalizeRadarData defaults missing moved and active fields", () => {
           },
         ],
       },
+      { name: "Top Right", entries: [] },
+      { name: "Bottom Left", entries: [] },
+      { name: "Bottom Right", entries: [] },
     ],
     rings: [{ key: "adopt", name: "Adopt", color: "#0f0" }],
   };
@@ -137,7 +156,7 @@ test("normalizeRadarData defaults missing moved and active fields", () => {
     {
       desc: "",
       label: "Go",
-      quadrant: 0,
+      quadrant: 2,
       ring: 0,
       moved: 0,
       active: true,

@@ -89,7 +89,10 @@ test("validateHomeData reports missing default radar references clearly", () => 
           },
           ring_descriptions: { ADOPT: "A" },
         },
-        ["data/radars/innovation-radar.yml", "data/radars/business-radar.yml"],
+        [
+          { key: "innovation-radar", data: { active: true } },
+          { key: "business-radar", data: { active: true } },
+        ],
       ),
     /data\/home\.yml:default_radar references missing radar "missing-radar"\. Available radars: innovation-radar, business-radar/,
   );
@@ -115,9 +118,9 @@ test("validateRadarData allows moved and active to be omitted", () => {
         bubble_stroke: "#999",
         highlight: "#aaa",
       },
-      print_layout: true,
-      links_in_new_tabs: false,
-      rings: [{ key: "adopt", name: "ADOPT", color: "#fff" }],
+        print_layout: true,
+        links_in_new_tabs: false,
+        rings: [{ key: "adopt", name: "ADOPT", color: "#fff" }],
       quadrants: [
         { name: "One", entries: [{ label: "Okay", desc: "Description", ring: "adopt" }] },
         { name: "Two", entries: [] },
@@ -125,5 +128,29 @@ test("validateRadarData allows moved and active to be omitted", () => {
         { name: "Four", entries: [] },
       ],
     }),
+  );
+});
+
+test("validateHomeData rejects an inactive default radar", () => {
+  assert.throws(
+    () =>
+      validateRadarDirectory(
+        "data/home.yml",
+        {
+          default_radar: "innovation-radar",
+          hero: { eyebrow: "A", title: "B", lede: "C" },
+          sections: {
+            radar: { title: "A", description: "B" },
+            rings: { title: "A", description: "B" },
+            quadrants: { title: "A", description: "B" },
+          },
+          ring_descriptions: { ADOPT: "A" },
+        },
+        [
+          { key: "innovation-radar", data: { active: false } },
+          { key: "business-radar", data: { active: true } },
+        ],
+      ),
+    /data\/home\.yml:default_radar references inactive radar "innovation-radar"\. Default radar must stay active/,
   );
 });

@@ -94,6 +94,7 @@ function main() {
   });
 
   const radarData = {
+    active: true,
     label: "Innovation Radar",
     title: config.title,
     width: config.width,

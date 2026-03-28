@@ -26,21 +26,31 @@ export function generateRadarDataModule() {
   const homePath = path.join(dataDir, "home.yml");
   const home = readYaml(homePath);
   const radarFiles = listRadarFiles();
-
-  validateHomeData(homePath, home);
-  validateRadarDirectory(homePath, home, radarFiles.map((filename) => path.join(radarsDir, filename)));
-
-  const radarCollection = radarFiles.map((filename) => {
+  const radars = radarFiles.map((filename) => {
     const radarPath = path.join(radarsDir, filename);
     const radar = readYaml(radarPath);
     const key = path.basename(filename, ".yml");
+
     validateRadarData(radarPath, radar);
 
     return {
       key,
-      label: radar.label || radar.title,
-      source: radar,
-      data: normalizeRadarData(radar),
+      path: radarPath,
+      data: radar,
+    };
+  });
+
+  validateHomeData(homePath, home);
+  validateRadarDirectory(homePath, home, radars);
+
+  const radarCollection = radars
+    .filter((radar) => radar.data.active !== false)
+    .map((radar) => {
+    return {
+      key: radar.key,
+      label: radar.data.label || radar.data.title,
+      source: radar.data,
+      data: normalizeRadarData(radar.data),
     };
   }).sort((left, right) => {
     if (left.key === home.default_radar) {

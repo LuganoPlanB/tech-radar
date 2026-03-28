@@ -2,6 +2,7 @@ label: Development Radar
 title: Lugano Plan ₿ Development Radar
 width: 1450
 height: 1000
+active: false
 colors:
   background: "#171717"
   panel: "#211d1d"

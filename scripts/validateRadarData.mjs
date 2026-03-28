@@ -119,6 +119,7 @@ export function validateHomeData(filePath, homeData) {
 export function validateRadarData(filePath, radarData) {
   expectPlainObject(filePath, "", radarData, "must contain a top-level object");
   assertNoUnknownKeys(filePath, "", radarData, [
+    "active",
     "label",
     "title",
     "width",
@@ -130,6 +131,7 @@ export function validateRadarData(filePath, radarData) {
     "quadrants",
   ]);
 
+  expectOptionalBoolean(filePath, "active", radarData.active);
   expectString(filePath, "label", radarData.label);
   expectString(filePath, "title", radarData.title);
   expectNumber(filePath, "width", radarData.width);
@@ -210,8 +212,8 @@ export function validateRadarData(filePath, radarData) {
   });
 }
 
-export function validateRadarDirectory(homePath, homeData, radarFiles) {
-  const radarKeys = radarFiles.map((filePath) => path.basename(filePath, ".yml"));
+export function validateRadarDirectory(homePath, homeData, radars) {
+  const radarKeys = radars.map((radar) => radar.key);
   if (radarKeys.length === 0) {
     throw schemaError(homePath, "default_radar", "requires at least one radar file under data/radars/");
   }
@@ -221,6 +223,15 @@ export function validateRadarDirectory(homePath, homeData, radarFiles) {
       homePath,
       "default_radar",
       `references missing radar "${homeData.default_radar}". Available radars: ${radarKeys.join(", ")}`,
+    );
+  }
+
+  const defaultRadar = radars.find((radar) => radar.key === homeData.default_radar);
+  if (defaultRadar && defaultRadar.data.active === false) {
+    throw schemaError(
+      homePath,
+      "default_radar",
+      `references inactive radar "${homeData.default_radar}". Default radar must stay active`,
     );
   }
 }

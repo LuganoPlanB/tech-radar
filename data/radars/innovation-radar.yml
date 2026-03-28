@@ -30,6 +30,55 @@ rings:
     name: HOLD
     color: "#9e1436"
 quadrants:
+
+  - name: AI
+    entries:
+      - label: QVAC
+        ring: assess
+        moved: +1
+        link: https://qvac.tether.io
+        desc: A new local AI paradigm by Tether
+      - label: Claude
+        ring: hold
+        link: https://claude.ai
+        desc: Claude online AI service
+      - label: Codex
+        ring: hold
+        link: https://chatgpt.com/codex/
+        desc: OpenAI online AI coder companion
+      - label: Copilot
+        ring: hold
+        link: https://copilot.ai
+        desc: Microsoft AI companion
+      - label: ONNX
+        ring: trial
+        link: https://onnx.ai
+        desc: The open standard for machine learning interoperability
+      - label: OpenVINO
+        ring: trial
+        link: http://openvino.ai
+        desc: Open source AI toolkit for Intel NPUs
+      - label: Mistral
+        ring: hold
+        link: https://mistral.ai
+        desc: Mistral AI, a French artificial intelligence startup
+      - label: GreenBoost
+        ring: trial
+        moved: +1
+        link: https://gitlab.com/IsolatedOctopi/nvidia_greenboost
+        desc: 3-Tier GPU Memory Extension for Linux
+
+  - name: Sovereignty
+    entries:
+      - label: Nextcloud
+        ring: adopt
+        link: https://nextcloud.com
+        desc: Open source content collaboration platform
+      - label: Keet
+        ring: trial
+        link: http://keet.io
+        desc: P2P chat with no middlemen, no metadata, no surveillance
+
   - name: Economy
     entries:
       - label: LVGA
@@ -121,42 +170,3 @@ quadrants:
         ring: trial
         desc: Wallet and Trust Infrastructure by the Swiss Federal Government
         link: https://www.eid.admin.ch/en/swiyu-coming-soon-e
-  - name: AI
-    entries:
-      - label: QVAC
-        ring: assess
-        moved: +1
-        link: https://qvac.tether.io
-        desc: A new local AI paradigm by Tether
-      - label: Claude
-        ring: hold
-        link: https://claude.ai
-        desc: Claude online AI service
-      - label: Codex
-        ring: hold
-        link: https://chatgpt.com/codex/
-        desc: OpenAI online AI coder companion
-      - label: Copilot
-        ring: hold
-        link: https://copilot.ai
-        desc: Microsoft AI companion
-      - label: ONNX
-        ring: trial
-        link: https://onnx.ai
-        desc: The open standard for machine learning interoperability
-      - label: OpenVINO
-        ring: trial
-        link: http://openvino.ai
-        desc: Open source AI toolkit for Intel NPUs
-      - label: Mistral
-        ring: hold
-        link: https://mistral.ai
-        desc: Mistral AI, a French artificial intelligence startup
-      - label: GreenBoost
-        ring: trial
-        moved: +1
-        link: https://gitlab.com/IsolatedOctopi/nvidia_greenboost
-        desc: 3-Tier GPU Memory Extension for Linux
-
-  - name: Resilience
-    entries: []

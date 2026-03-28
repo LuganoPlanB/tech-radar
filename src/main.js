@@ -15,7 +15,6 @@ function ringLabel(name) {
 }
 
 const radarByKey = new Map(radarCollection.map((radar) => [radar.key, radar]));
-const quadrantDisplayOrder = [2, 3, 1, 0];
 
 function entryLinkAttributes(radar, link) {
   if (!link || link === "#") {
@@ -42,9 +41,7 @@ function compareEntriesByRing(radar, left, right) {
 }
 
 function renderQuadrants(radar) {
-  return quadrantDisplayOrder
-    .map((quadrantIndex) => radar.source.quadrants[quadrantIndex])
-    .filter(Boolean)
+  return radar.source.quadrants
     .map((quadrant) => {
       const entries = [...(quadrant.entries || [])]
         .sort((left, right) => compareEntriesByRing(radar, left, right))
