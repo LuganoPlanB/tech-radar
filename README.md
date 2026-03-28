@@ -5,8 +5,7 @@ This repository now builds a multi-radar static Vite site backed by YAML content
 ## Repository Structure
 
 - `data/home.yml`: homepage copy, section labels, and ring descriptions
-- `data/radars/<radar-key>/radar.yml`: radar-wide metadata, colors, rings, and quadrants
-- `data/radars/<radar-key>/quadrants/*.yml`: quadrant-specific entries for that radar
+- `data/radars/<radar-key>.yml`: radar-wide metadata, label, rings, and quadrants with inline entries
 - `src/radar/renderRadar.js`: D3 renderer adapted from the original static implementation
 - `src/radar/normalizeRadarData.mjs`: transforms symbolic YAML content into the renderer format
 - `scripts/generate-radar-data-module.mjs`: build-time data generation from YAML
@@ -53,9 +52,8 @@ npm run lint
 
 The source of truth for radar content is YAML.
 
-- Edit `data/radars/<radar-key>/radar.yml` for per-radar metadata.
+- Edit `data/radars/<radar-key>.yml` for per-radar metadata, label, quadrants, and entries.
 - Edit `data/home.yml` for homepage copy.
-- Edit `data/radars/<radar-key>/quadrants/*.yml` for entries.
 - `npm run sync:data` regenerates the JS module consumed by the app.
 - `npm run dev` and `npm run build` run the data sync automatically.
 

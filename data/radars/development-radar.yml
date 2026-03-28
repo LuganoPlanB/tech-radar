@@ -1,4 +1,5 @@
-title: "Lugano Plan ₿ Development Radar"
+label: Development Radar
+title: Lugano Plan ₿ Development Radar
 width: 1450
 height: 1000
 colors:
@@ -15,25 +16,25 @@ colors:
   highlight: "#ffc785"
 print_layout: true
 links_in_new_tabs: true
-quadrants:
-  - key: "languages"
-    name: "Infrastructure"
-  - key: "infra_hosting"
-    name: "Operations"
-  - key: "network_security"
-    name: "Interoperability"
-  - key: "data_management"
-    name: "Language"
 rings:
-  - key: "adopt"
-    name: "ADOPT"
+  - key: adopt
+    name: ADOPT
     color: "#f7931a"
-  - key: "trial"
-    name: "TRIAL"
+  - key: trial
+    name: TRIAL
     color: "#ffc785"
-  - key: "assess"
-    name: "ASSESS"
+  - key: assess
+    name: ASSESS
     color: "#e15364"
-  - key: "hold"
-    name: "HOLD"
+  - key: hold
+    name: HOLD
     color: "#9e1436"
+quadrants:
+  - name: Infrastructure
+    entries: []
+  - name: Operations
+    entries: []
+  - name: Interoperability
+    entries: []
+  - name: Language
+    entries: []

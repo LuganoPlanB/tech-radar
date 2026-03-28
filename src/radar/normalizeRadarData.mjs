@@ -1,23 +1,12 @@
-export function normalizeRadarData(radar, quadrantFiles) {
-  const quadrantIndexByKey = new Map();
+export function normalizeRadarData(radar) {
   const ringIndexByKey = new Map();
-
-  radar.quadrants.forEach((quadrant, index) => {
-    quadrantIndexByKey.set(quadrant.key, index);
-  });
 
   radar.rings.forEach((ring, index) => {
     ringIndexByKey.set(ring.key, index);
   });
 
-  const entries = quadrantFiles.flatMap((quadrantFile) => {
-    const quadrantIndex = quadrantIndexByKey.get(quadrantFile.quadrant);
-
-    if (quadrantIndex === undefined) {
-      throw new Error(`Unknown quadrant key: ${quadrantFile.quadrant}`);
-    }
-
-    return quadrantFile.entries.map((entry) => {
+  const entries = radar.quadrants.flatMap((quadrant, quadrantIndex) =>
+    (quadrant.entries || []).map((entry) => {
       const ringIndex = ringIndexByKey.get(entry.ring);
 
       if (ringIndex === undefined) {
@@ -25,7 +14,6 @@ export function normalizeRadarData(radar, quadrantFiles) {
       }
 
       return {
-        key: entry.key,
         label: entry.label,
         quadrant: quadrantIndex,
         ring: ringIndex,
@@ -33,8 +21,8 @@ export function normalizeRadarData(radar, quadrantFiles) {
         link: entry.link,
         moved: entry.moved,
       };
-    });
-  });
+    }),
+  );
 
   return {
     svg_id: "radar",

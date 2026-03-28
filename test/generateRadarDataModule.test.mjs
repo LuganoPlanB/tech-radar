@@ -14,12 +14,14 @@ test("generateRadarDataModule exports the configured radar collection", async ()
   assert.equal(generatedModule.defaultRadarKey, "innovation-radar");
   assert.deepEqual(
     generatedModule.radarCollection.map((radar) => radar.key),
-    ["innovation-radar", "development-radar", "business-radar"],
+    ["innovation-radar", "business-radar", "development-radar"],
   );
   assert.deepEqual(
     generatedModule.radarCollection.map((radar) => radar.label),
-    ["Innovation Radar", "Development Radar", "Business Radar"],
+    ["Innovation Radar", "Business Radar", "Development Radar"],
   );
   assert.ok(generatedModule.radarCollection.every((radar) => radar.source.quadrants.length === 4));
   assert.ok(generatedModule.radarCollection.every((radar) => radar.data.quadrants.length === 4));
+  assert.ok(generatedModule.radarCollection.every((radar) => !("key" in radar.source.quadrants[0])));
+  assert.ok(generatedModule.radarCollection.every((radar) => typeof radar.source.label === "string"));
 });

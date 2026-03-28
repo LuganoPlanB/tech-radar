@@ -21,7 +21,7 @@ function entryLinkAttributes(radar, link) {
     return "";
   }
 
-  if (!radar.source.radar.links_in_new_tabs) {
+  if (!radar.source.links_in_new_tabs) {
     return "";
   }
 
@@ -30,11 +30,10 @@ function entryLinkAttributes(radar, link) {
 
 function renderQuadrants(radar) {
   return radar.source.quadrants
-    .map((quadrantFile) => {
-      const quadrant = radar.source.radar.quadrants.find((item) => item.key === quadrantFile.quadrant);
-      const entries = quadrantFile.entries
+    .map((quadrant) => {
+      const entries = (quadrant.entries || [])
         .map((entry) => {
-          const ring = radar.source.radar.rings.find((item) => item.key === entry.ring);
+          const ring = radar.source.rings.find((item) => item.key === entry.ring);
           const moved =
             entry.moved > 0 ? "Moved in" :
             entry.moved < 0 ? "Moved out" :
@@ -59,7 +58,7 @@ function renderQuadrants(radar) {
 }
 
 function renderRings(radar) {
-  return radar.source.radar.rings
+  return radar.source.rings
     .map(
       (ring) => `
         <article class="ring-card">
@@ -110,7 +109,7 @@ document.querySelector("#app").innerHTML = `
       <div class="hero__overlay"></div>
       <div class="hero__inner">
         <p class="eyebrow">${homeContent.hero.eyebrow}</p>
-        <h1>${homeContent.hero.title || radarCollection[0]?.source.radar.title || ""}</h1>
+        <h1>${homeContent.hero.title || radarCollection[0]?.source.title || ""}</h1>
         <p class="lede">${homeContent.hero.lede}</p>
       </div>
     </header>
@@ -169,7 +168,7 @@ function renderSelectedRadar(radarKey) {
 
   document.title = `Lugano Plan ₿ ${radar.label}`;
   radarSvg.setAttribute("aria-label", `${radar.label} visualization`);
-  radarContext.textContent = radar.source.radar.title;
+  radarContext.textContent = radar.source.title;
   ringGrid.innerHTML = renderRings(radar);
   quadrantGrid.innerHTML = renderQuadrants(radar);
   renderRadar(radarSvg, structuredClone(radar.data));

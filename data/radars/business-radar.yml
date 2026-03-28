@@ -1,0 +1,395 @@
+label: Business Radar
+title: Lugano Plan ₿ Business Radar
+width: 1450
+height: 1000
+colors:
+  background: "#171717"
+  panel: "#211d1d"
+  panel_glow_start: "#f7931a"
+  panel_glow_end: "#9e1436"
+  grid: "#6f5853"
+  inactive: "#4a2d33"
+  text: "#ffffff"
+  text_muted: "#d6c4c4"
+  bubble_fill: "#211d1d"
+  bubble_stroke: "#e15364"
+  highlight: "#ffc785"
+print_layout: true
+links_in_new_tabs: true
+rings:
+  - key: adopt
+    name: ADOPT
+    color: "#f7931a"
+  - key: trial
+    name: TRIAL
+    color: "#ffc785"
+  - key: assess
+    name: ASSESS
+    color: "#e15364"
+  - key: hold
+    name: HOLD
+    color: "#9e1436"
+quadrants:
+  - name: Languages
+    entries:
+      - label: Go
+        ring: adopt
+        moved: 0
+        active: true
+        link: lua.org
+      - label: Go
+        ring: trial
+        moved: 0
+        active: true
+        link: go.html
+      - label: Clojurescript
+        ring: trial
+        moved: 0
+        active: true
+        link: clojurescript.html
+      - label: Clojure
+        ring: adopt
+        moved: 0
+        active: true
+        link: clojure.html
+      - label: Scala
+        ring: assess
+        moved: 0
+        active: true
+        link: Scala.html
+      - label: V
+        ring: assess
+        moved: 0
+        active: true
+        link: https://vlang.io/
+      - label: TypeScript
+        ring: trial
+        moved: 0
+        active: true
+        link: typescript.html
+      - label: Javascript
+        ring: hold
+        moved: 0
+        active: true
+        link: javascript.html
+      - label: Swagger
+        ring: adopt
+        moved: 0
+        active: true
+        link: swagger.html
+      - label: Python
+        ring: adopt
+        moved: 0
+        active: true
+        link: python.html
+      - label: Rust
+        ring: assess
+        moved: 0
+        active: true
+        link: rust.html
+      - label: R
+        ring: adopt
+        moved: 0
+        active: true
+        link: R.html
+      - label: C99
+        ring: adopt
+        moved: 0
+        active: true
+        link: C99.html
+      - label: Erlang
+        ring: assess
+        moved: 0
+        active: true
+        link: erlang.html
+      - label: Perl
+        ring: hold
+        moved: 0
+        active: true
+        link: perl.html
+      - label: PHP
+        ring: hold
+        moved: 0
+        active: true
+        link: php.html
+      - label: Ruby
+        ring: hold
+        moved: 0
+        active: true
+        link: ruby.html
+  - name: Infra / Hosting
+    entries:
+      - label: Gentoo
+        ring: adopt
+        moved: 0
+        active: true
+        link: https://gentoo.org
+      - label: Qemu
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../infra/qemu.html
+      - label: DigitalOcean
+        ring: hold
+        moved: -1
+        active: true
+        link: ../hosting/digitalocean.html
+      - label: Docker
+        ring: assess
+        moved: 0
+        active: true
+        link: ../infrastructure/docker.html
+      - label: LXC
+        ring: adopt
+        moved: 0
+        active: true
+        link: https://linuxcontainers.org
+      - label: Ganeti
+        ring: adopt
+        moved: 0
+        active: true
+        link: http://www.ganeti.org
+      - label: Kubernetes
+        ring: assess
+        moved: 0
+        active: true
+        link: https://kubernetes.io
+      - label: AWS
+        ring: trial
+        moved: 0
+        active: true
+        link: ../infrastructure/aws.html
+      - label: Alpine
+        ring: trial
+        moved: 0
+        active: true
+        link: https://alpinelinux.org
+      - label: Devuan
+        ring: adopt
+        moved: 0
+        active: true
+        link: https://devuan.org
+      - label: Debian
+        ring: hold
+        moved: 0
+        active: true
+        link: ../distro/debian.html
+      - label: Gentoo
+        ring: trial
+        moved: 0
+        active: true
+        link: ../distro/gentoo.html
+      - label: HAProxy
+        ring: trial
+        moved: 0
+        active: true
+        link: ../infrastructure/haproxy.html
+      - label: OpenResty
+        ring: trial
+        moved: 0
+        active: true
+        link: ../infrastructure/openresty.html
+      - label: Nginx
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../infrastructure/nginx.html
+      - label: OpenNebula
+        ring: hold
+        moved: -1
+        active: true
+        link: ../hosting/opennebula.html
+  - name: Network / Security
+    entries:
+      - label: Tor
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../net/tor.html
+      - label: Gopher
+        ring: adopt
+        moved: 0
+        active: true
+        link: https://nl.wikipedia.org/wiki/Gopher
+      - label: WolfSSL
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../sec/wolfssl.html
+      - label: Socks5
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../net/socks5.html
+      - label: OSC
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../net/osc.html
+      - label: ZeroMQ
+        ring: hold
+        moved: 0
+        active: true
+        link: ../net/zeromq.html
+      - label: TCP/IP
+        ring: hold
+        moved: 1
+        active: true
+        link: ../net/tcpip.html
+      - label: OpenSSL
+        ring: hold
+        moved: 0
+        active: true
+        link: ../sec/openssl.html
+      - label: libsodium
+        ring: trial
+        moved: 0
+        active: true
+        link: ../sec/libsodium.html
+      - label: Flask
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../net/flask.html
+      - label: Django
+        ring: hold
+        moved: 0
+        active: true
+        link: ../net/django.html
+      - label: Compojure
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../net/compojure.html
+      - label: IPFS
+        ring: trial
+        moved: 0
+        active: true
+        link: ../net/ipfs.html
+      - label: gRPC
+        ring: assess
+        moved: 0
+        active: true
+        link: ../frameworks/grpc.html
+      - label: tor-dam
+        ring: trial
+        moved: 0
+        active: true
+        link: ../net/tor-dam.html
+      - label: roundshot
+        ring: trial
+        moved: 0
+        active: true
+        link: ../net/roundshot.html
+  - name: Data Management
+    entries:
+      - label: OpenNLP
+        ring: assess
+        moved: 0
+        active: true
+        link: ../frameworks/opennlp.html
+      - label: TensorFlow
+        ring: assess
+        moved: 1
+        active: true
+        link: ../frameworks/tensorflow.html
+      - label: Darknet
+        ring: assess
+        moved: 1
+        active: true
+        link: https://pjreddie.com/darknet/
+      - label: Zenroom
+        ring: adopt
+        moved: 1
+        active: true
+        link: https://zenroom.dyne.org
+      - label: Git
+        ring: adopt
+        moved: 1
+        active: true
+        link: https://git-scm.com/
+      - label: POI
+        ring: adopt
+        moved: 1
+        active: true
+        link: https://poi.apache.org
+      - label: solr
+        ring: adopt
+        moved: 1
+        active: true
+        link: https://lucene.apache.org/solr
+      - label: Tomb
+        ring: adopt
+        moved: 1
+        active: true
+        link: https://tomb.dyne.org
+      - label: Hadoop
+        ring: assess
+        moved: 0
+        active: true
+        link: ../data_processing/hadoop.html
+      - label: Elasticsearch
+        ring: assess
+        moved: 1
+        active: true
+        link: ../datastores/elasticsearch.html
+      - label: etcd
+        ring: trial
+        moved: 0
+        active: true
+        link: ../datastores/etcd.html
+      - label: PostgreSQL
+        ring: hold
+        moved: 0
+        active: true
+        link: ../datastores/postgresql.html
+      - label: Redis
+        ring: adopt
+        moved: 0
+        active: true
+        link: ../datastores/redis.html
+      - label: Consul
+        ring: hold
+        moved: 0
+        active: true
+        link: ../datastores/consul.html
+      - label: Memcached
+        ring: hold
+        moved: 0
+        active: true
+        link: ../datastores/memcached.html
+      - label: MongoDB
+        ring: hold
+        moved: -1
+        active: true
+        link: ../datastores/mongodb.html
+      - label: MySQL
+        ring: hold
+        moved: 0
+        active: true
+        link: ../datastores/mysql.html
+      - label: Kafka
+        ring: trial
+        moved: -1
+        active: true
+        link: ../queues/kafka.html
+      - label: Multichain
+        ring: trial
+        moved: 1
+        active: true
+        link: ../blockcains/multichain.html
+      - label: Sawtooth
+        ring: trial
+        moved: 1
+        active: true
+        link: ../blockcains/sawtooth.html
+      - label: Ethereum
+        ring: hold
+        moved: 0
+        active: true
+        link: ../blockcains/ethereum.html
+      - label: Chainspace
+        ring: hold
+        moved: -1
+        active: true
+        link: ../blockcains/chainspace.html

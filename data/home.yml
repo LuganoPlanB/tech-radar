@@ -1,11 +1,4 @@
 default_radar: "innovation-radar"
-radars:
-  - key: "innovation-radar"
-    label: "Innovation Radar"
-  - key: "development-radar"
-    label: "Development Radar"
-  - key: "business-radar"
-    label: "Business Radar"
 hero:
   eyebrow: "Lugano Plan ₿"
   title: "Radar Library"

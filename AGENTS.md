@@ -124,4 +124,4 @@ Prefer the following order:
 - The local dev server is `browser-sync docs -w`.
 - The page currently loads D3 from `https://d3js.org/d3.v4.min.js`.
 - The maintainer listed in `MAINTAINERS` is Denis Roio.
-- The Vite app source of truth is now `data/home.yml` plus `data/radars/<radar-key>/`.
+- The Vite app source of truth is now `data/home.yml` plus one `data/radars/<radar-key>.yml` per radar.

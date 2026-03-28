@@ -7,42 +7,9 @@ const sourcePath = path.join(repoRoot, "docs", "index.html");
 const dataDir = path.join(repoRoot, "data");
 const radarsDir = path.join(dataDir, "radars");
 const defaultRadarKey = "innovation-radar";
-const defaultRadarDir = path.join(radarsDir, defaultRadarKey);
-const quadrantsDir = path.join(defaultRadarDir, "quadrants");
-
-const quadrantKeys = [
-  "languages",
-  "infra_hosting",
-  "network_security",
-  "data_management",
-];
+const defaultRadarPath = path.join(radarsDir, `${defaultRadarKey}.yml`);
 
 const ringKeys = ["adopt", "trial", "assess", "hold"];
-
-function slugify(value) {
-  return value
-    .toLowerCase()
-    .replace(/&/g, " and ")
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_+|_+$/g, "")
-    .replace(/_+/g, "_");
-}
-
-function uniqueKey(baseKey, usedKeys) {
-  if (!usedKeys.has(baseKey)) {
-    usedKeys.add(baseKey);
-    return baseKey;
-  }
-
-  let suffix = 2;
-  while (usedKeys.has(`${baseKey}_${suffix}`)) {
-    suffix += 1;
-  }
-
-  const key = `${baseKey}_${suffix}`;
-  usedKeys.add(key);
-  return key;
-}
 
 function readLegacyConfig() {
   const html = fs.readFileSync(sourcePath, "utf8");
@@ -116,63 +83,44 @@ function writeYaml(filePath, data) {
 
 function main() {
   const config = readLegacyConfig();
-  const usedKeys = new Set();
   const homePath = path.join(dataDir, "home.yml");
   const existingHome = fs.existsSync(homePath) ? readYaml(homePath) : {};
 
   ensureDir(radarsDir);
-  ensureDir(quadrantsDir);
 
   writeYaml(homePath, {
     ...existingHome,
     default_radar: defaultRadarKey,
-    radars: [
-      { key: "innovation-radar", label: "Innovation Radar" },
-      { key: "development-radar", label: "Development Radar" },
-      { key: "business-radar", label: "Business Radar" },
-    ],
   });
 
   const radarData = {
+    label: "Innovation Radar",
     title: config.title,
     width: config.width,
     height: config.height,
     colors: config.colors,
     print_layout: config.print_layout,
     links_in_new_tabs: config.links_in_new_tabs,
-    quadrants: config.quadrants.map((quadrant, index) => ({
-      key: quadrantKeys[index],
-      name: quadrant.name,
-    })),
     rings: config.rings.map((ring, index) => ({
       key: ringKeys[index],
       name: ring.name,
       color: ring.color,
     })),
+    quadrants: config.quadrants.map((quadrant, quadrantIndex) => ({
+      name: quadrant.name,
+      entries: config.entries
+        .filter((entry) => entry.quadrant === quadrantIndex)
+        .map((entry) => ({
+          label: entry.label,
+          ring: ringKeys[entry.ring],
+          moved: entry.moved,
+          active: entry.active,
+          link: entry.link,
+        })),
+    })),
   };
 
-  writeYaml(path.join(defaultRadarDir, "radar.yml"), radarData);
-
-  config.quadrants.forEach((quadrant, quadrantIndex) => {
-    const entries = config.entries
-      .filter((entry) => entry.quadrant === quadrantIndex)
-      .map((entry) => ({
-        key: uniqueKey(slugify(entry.label), usedKeys),
-        label: entry.label,
-        ring: ringKeys[entry.ring],
-        moved: entry.moved,
-        active: entry.active,
-        link: entry.link,
-      }));
-
-    writeYaml(
-      path.join(quadrantsDir, `${quadrantKeys[quadrantIndex]}.yml`),
-      {
-        quadrant: quadrantKeys[quadrantIndex],
-        entries,
-      },
-    );
-  });
+  writeYaml(defaultRadarPath, radarData);
 }
 
 main();
