@@ -34,7 +34,7 @@ quadrants:
   - name: Economy
     entries:
       - label: LVGA
-        ring: trial
+        ring: adopt
         link: https://my.lugano.ch/en/pagare-in-lvga-lugano/
       - label: Bitcoin
         ring: adopt
@@ -43,8 +43,20 @@ quadrants:
         ring: assess
         link: https://www.taler.net
       - label: SwissLedger
-        ring: trial
+        ring: adopt
         link: https://ledger.swiss
+      - label: Arkade
+        ring: trial
+        link: https://arkadeos.com
+      - label: Lightning
+        ring: trial
+        link: https://lightning.network
+      - label: Twint
+        ring: hold
+        link: https://twint.ch
+      - label: iDEAL
+        ring: hold
+        link: https://ideal.nl
 
   - name: Identity
     entries:
@@ -75,6 +87,7 @@ quadrants:
       - label: EUDI
         ring: hold
         link: https://news.dyne.org/the-problems-of-european-digital-identity/
+
   - name: AI
     entries:
       - label: QVAC
@@ -95,6 +108,12 @@ quadrants:
       - label: OpenVINO
         ring: trial
         link: http://openvino.ai
+      - label: Mistral
+        ring: hold
+        link: https://mistral.ai
+      - label: GreenBoost
+        ring: trial
+        link: https://gitlab.com/IsolatedOctopi/nvidia_greenboost
 
   - name: Resilience
     entries: []
