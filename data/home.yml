@@ -1,7 +1,7 @@
 default_radar: "innovation-radar"
 hero:
   eyebrow: "Lugano Plan ₿"
-  title: "Radar Library"
+  title: "Tech Radar"
   lede: "A living map of tools, protocols, and infrastructure across innovation, development, and business."
 sections:
   radar:
