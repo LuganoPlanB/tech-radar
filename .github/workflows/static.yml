@@ -24,10 +24,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download Plan B theme
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: bash scripts/get-theme.sh
+      - name: Apply Plan B theme
+        uses: LuganoPlanB/vite-theme/.github/actions/apply@main
 
       - name: Setup Node
         uses: actions/setup-node@v6.3.0
