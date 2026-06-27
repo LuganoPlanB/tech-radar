@@ -1,7 +1,10 @@
 import "./style.css";
 import "./lugano-planb-vite-theme/theme.css";
 import {
+  createPlanBFooter,
   createPlanBHeader,
+  createPlanBPageShell,
+  createPlanBSiteHeader,
   initializePlanBThemeToggle,
 } from "./lugano-planb-vite-theme/index.js";
 
@@ -64,10 +67,10 @@ function renderQuadrants(radar) {
         .join("");
 
       return `
-        <section class="quadrant-card">
+        <article class="planb-card">
           <h3>${quadrant.name}</h3>
           <ul class="entry-list">${entries}</ul>
-        </section>
+        </article>
       `;
     })
     .join("");
@@ -77,7 +80,7 @@ function renderRings(radar) {
   return radar.source.rings
     .map(
       (ring) => `
-        <article class="ring-card">
+        <article class="planb-card">
           <h3 class="ring-card__title" style="--ring-color: ${ring.color}">${ringLabel(ring.name)}</h3>
           <p>${homeContent.ring_descriptions[ring.name] || ""}</p>
         </article>
@@ -119,54 +122,82 @@ function getInitialRadarKey() {
   return radarCollection[0]?.key || "";
 }
 
-const header = createPlanBHeader({
-  eyebrow: homeContent.hero.eyebrow,
-  title: homeContent.hero.title || radarCollection[0]?.source.title || "",
-  lede: homeContent.hero.lede,
+const shell = createPlanBPageShell({
+  siteHeader: createPlanBSiteHeader({
+    brand: "Lugano Plan ₿",
+    navItems: [
+      { label: "Radar", href: "/tech-radar/" },
+      { label: "Network", href: "https://planb.network" },
+    ],
+    action: { label: "GitHub", href: "https://github.com/dyne/tech-radar" },
+  }),
+  header: createPlanBHeader({
+    eyebrow: homeContent.hero.eyebrow,
+    title: homeContent.hero.title || radarCollection[0]?.source.title || "",
+    lede: homeContent.hero.lede,
+  }),
+  mainContent: `
+    <section class="planb-panel">
+      <div class="planb-section-heading">
+        <h2>${homeContent.sections.rings.title}</h2>
+        <p>${homeContent.sections.rings.description}</p>
+      </div>
+      <div class="ring-grid" id="ring-grid"></div>
+    </section>
+
+    <section class="planb-panel">
+      <div class="planb-section-heading">
+        <h2>${homeContent.sections.radar.title}</h2>
+        <p>${homeContent.sections.radar.description}</p>
+      </div>
+      <div class="radar-tabs" role="tablist" aria-label="Radar selection">
+        ${renderTabs()}
+      </div>
+      <p class="radar-context" id="radar-context"></p>
+      <div class="radar-stage">
+        <svg id="radar" aria-label="Technology radar"></svg>
+      </div>
+    </section>
+
+    <section class="planb-panel">
+      <div class="planb-section-heading">
+        <h2>${homeContent.sections.quadrants.title}</h2>
+        <p>${homeContent.sections.quadrants.description}</p>
+      </div>
+      <div class="quadrant-grid" id="quadrant-grid"></div>
+    </section>
+  `,
+  footer: createPlanBFooter({
+    brand: "Lugano Plan ₿",
+    summary: "Technology radar for the Plan B ecosystem — tracking tools, languages, infrastructure, and data practices across civic technology projects.",
+    groups: [
+      {
+        title: "Explore",
+        links: [
+          { label: "Radar", href: "/tech-radar/" },
+          { label: "GitHub", href: "https://github.com/dyne/tech-radar" },
+        ],
+      },
+      {
+        title: "Plan B",
+        links: [
+          { label: "Network", href: "https://planb.network" },
+          { label: "Lugano Plan B", href: "https://lugano.planb.network" },
+        ],
+      },
+    ],
+    meta: "Open source technology radar. Built with D3 and Vite.",
+  }),
 });
-
-const main = document.createElement("main");
-main.className = "planb-container planb-main";
-main.innerHTML = `
-  <section class="info-grid">
-    <div class="section-heading">
-      <h2>${homeContent.sections.rings.title}</h2>
-      <p>${homeContent.sections.rings.description}</p>
-    </div>
-    <div class="ring-grid" id="ring-grid"></div>
-  </section>
-
-  <section class="radar-panel">
-    <div class="section-heading">
-      <h2>${homeContent.sections.radar.title}</h2>
-      <p>${homeContent.sections.radar.description}</p>
-    </div>
-    <div class="radar-tabs" role="tablist" aria-label="Radar selection">
-      ${renderTabs()}
-    </div>
-    <p class="radar-context" id="radar-context"></p>
-    <div class="radar-stage">
-      <svg id="radar" aria-label="Technology radar"></svg>
-    </div>
-  </section>
-
-  <section class="info-grid">
-    <div class="section-heading">
-      <h2>${homeContent.sections.quadrants.title}</h2>
-      <p>${homeContent.sections.quadrants.description}</p>
-    </div>
-    <div class="quadrant-grid" id="quadrant-grid"></div>
-  </section>
-`;
-
-const shell = document.createElement("div");
-shell.className = "planb-page-shell";
-shell.append(header, main);
 
 document.querySelector("#app").replaceChildren(shell);
 
+if (!localStorage.getItem("planb-color-scheme")) {
+  localStorage.setItem("planb-color-scheme", "light");
+}
 initializePlanBThemeToggle();
 
+const main = shell.querySelector("main");
 const radarSvg = main.querySelector("#radar");
 const radarContext = main.querySelector("#radar-context");
 const ringGrid = main.querySelector("#ring-grid");
@@ -192,7 +223,7 @@ function renderSelectedRadar(radarKey) {
   quadrantGrid.innerHTML = renderQuadrants(radar);
   renderRadar(radarSvg, structuredClone(radar.data));
 
-  document.querySelectorAll(".radar-tab").forEach((tab) => {
+  main.querySelectorAll(".radar-tab").forEach((tab) => {
     const isSelected = tab.dataset.radarKey === radarKey;
     tab.classList.toggle("radar-tab--active", isSelected);
     tab.setAttribute("aria-selected", isSelected ? "true" : "false");
@@ -202,7 +233,7 @@ function renderSelectedRadar(radarKey) {
 }
 
 const initialRadarKey = getInitialRadarKey();
-document.querySelectorAll(".radar-tab").forEach((tab) => {
+main.querySelectorAll(".radar-tab").forEach((tab) => {
   tab.addEventListener("click", () => {
     renderSelectedRadar(tab.dataset.radarKey);
   });
