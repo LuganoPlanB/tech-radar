@@ -24,6 +24,51 @@ function ringLabel(name) {
 
 const radarByKey = new Map(radarCollection.map((radar) => [radar.key, radar]));
 
+function readThemeVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+const RING_THEME_KEYS = {
+  ADOPT: "--planb-color-highlight",
+  TRIAL: "--planb-color-neon-cyan",
+  ASSESS: "--planb-color-accent",
+  HOLD: "--planb-color-neon-violet",
+};
+
+function resolveRingColors() {
+  return Object.fromEntries(
+    Object.entries(RING_THEME_KEYS).map(([ring, prop]) => [ring, readThemeVar(prop)]),
+  );
+}
+
+function resolveRadarColors() {
+  return {
+    background: readThemeVar("--planb-color-canvas"),
+    panel: readThemeVar("--planb-color-panel"),
+    panel_glow_start: readThemeVar("--planb-color-highlight"),
+    grid: readThemeVar("--planb-color-text-soft"),
+    inactive: readThemeVar("--planb-color-text-soft"),
+    text: readThemeVar("--planb-color-text"),
+    text_muted: readThemeVar("--planb-color-text-soft"),
+    bubble_fill: readThemeVar("--planb-color-panel"),
+    bubble_stroke: readThemeVar("--planb-color-accent"),
+    highlight: readThemeVar("--planb-color-accent-soft"),
+  };
+}
+
+function applyThemeToRadarConfig(data) {
+  const themeColors = resolveRadarColors();
+  const ringColors = resolveRingColors();
+
+  const config = structuredClone(data);
+  config.colors = { ...config.colors, ...themeColors };
+  config.rings = config.rings.map((ring) => ({
+    ...ring,
+    color: ringColors[ring.name] || ring.color,
+  }));
+  return config;
+}
+
 function entryLinkAttributes(radar, link) {
   if (!link || link === "#") {
     return "";
@@ -77,11 +122,12 @@ function renderQuadrants(radar) {
 }
 
 function renderRings(radar) {
+  const ringColors = resolveRingColors();
   return radar.source.rings
     .map(
       (ring) => `
         <article class="planb-card">
-          <h3 class="ring-card__title" style="--ring-color: ${ring.color}">${ringLabel(ring.name)}</h3>
+          <h3 class="ring-card__title" style="--ring-color: ${ringColors[ring.name] || ring.color}">${ringLabel(ring.name)}</h3>
           <p>${homeContent.ring_descriptions[ring.name] || ""}</p>
         </article>
       `,
@@ -209,6 +255,8 @@ function updateQueryString(radarKey) {
   window.history.replaceState({}, "", url);
 }
 
+let currentRadarKey = null;
+
 function renderSelectedRadar(radarKey) {
   const radar = radarByKey.get(radarKey);
 
@@ -216,12 +264,13 @@ function renderSelectedRadar(radarKey) {
     return;
   }
 
+  currentRadarKey = radarKey;
   document.title = `Lugano Plan ₿ ${radar.label}`;
   radarSvg.setAttribute("aria-label", `${radar.label} visualization`);
   radarContext.textContent = radar.source.title;
   ringGrid.innerHTML = renderRings(radar);
   quadrantGrid.innerHTML = renderQuadrants(radar);
-  renderRadar(radarSvg, structuredClone(radar.data));
+  renderRadar(radarSvg, applyThemeToRadarConfig(radar.data));
 
   main.querySelectorAll(".radar-tab").forEach((tab) => {
     const isSelected = tab.dataset.radarKey === radarKey;
@@ -231,6 +280,12 @@ function renderSelectedRadar(radarKey) {
 
   updateQueryString(radarKey);
 }
+
+new MutationObserver(() => {
+  if (currentRadarKey) {
+    renderSelectedRadar(currentRadarKey);
+  }
+}).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
 const initialRadarKey = getInitialRadarKey();
 main.querySelectorAll(".radar-tab").forEach((tab) => {
