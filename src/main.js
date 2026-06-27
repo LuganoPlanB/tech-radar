@@ -1,4 +1,9 @@
 import "./style.css";
+import "./lugano-planb-vite-theme/theme.css";
+import {
+  createPlanBHeader,
+  initializePlanBThemeToggle,
+} from "./lugano-planb-vite-theme/index.js";
 
 import { defaultRadarKey, homeContent, radarCollection } from "./generated/radarData.mjs";
 import { renderRadar } from "./radar/renderRadar.js";
@@ -114,55 +119,58 @@ function getInitialRadarKey() {
   return radarCollection[0]?.key || "";
 }
 
-document.querySelector("#app").innerHTML = `
-  <div class="page-shell">
-    <header class="hero">
-      <div class="hero__overlay"></div>
-      <div class="hero__inner">
-        <p class="eyebrow">${homeContent.hero.eyebrow}</p>
-        <h1>${homeContent.hero.title || radarCollection[0]?.source.title || ""}</h1>
-        <p class="lede">${homeContent.hero.lede}</p>
-      </div>
-    </header>
+const header = createPlanBHeader({
+  eyebrow: homeContent.hero.eyebrow,
+  title: homeContent.hero.title || radarCollection[0]?.source.title || "",
+  lede: homeContent.hero.lede,
+});
 
-    <main class="content">
-      <section class="info-grid">
-        <div class="section-heading">
-          <h2>${homeContent.sections.rings.title}</h2>
-          <p>${homeContent.sections.rings.description}</p>
-        </div>
-        <div class="ring-grid" id="ring-grid"></div>
-      </section>
+const main = document.createElement("main");
+main.className = "planb-container planb-main";
+main.innerHTML = `
+  <section class="info-grid">
+    <div class="section-heading">
+      <h2>${homeContent.sections.rings.title}</h2>
+      <p>${homeContent.sections.rings.description}</p>
+    </div>
+    <div class="ring-grid" id="ring-grid"></div>
+  </section>
 
-      <section class="radar-panel">
-        <div class="section-heading">
-          <h2>${homeContent.sections.radar.title}</h2>
-          <p>${homeContent.sections.radar.description}</p>
-        </div>
-        <div class="radar-tabs" role="tablist" aria-label="Radar selection">
-          ${renderTabs()}
-        </div>
-        <p class="radar-context" id="radar-context"></p>
-        <div class="radar-stage">
-          <svg id="radar" aria-label="Technology radar"></svg>
-        </div>
-      </section>
+  <section class="radar-panel">
+    <div class="section-heading">
+      <h2>${homeContent.sections.radar.title}</h2>
+      <p>${homeContent.sections.radar.description}</p>
+    </div>
+    <div class="radar-tabs" role="tablist" aria-label="Radar selection">
+      ${renderTabs()}
+    </div>
+    <p class="radar-context" id="radar-context"></p>
+    <div class="radar-stage">
+      <svg id="radar" aria-label="Technology radar"></svg>
+    </div>
+  </section>
 
-      <section class="info-grid">
-        <div class="section-heading">
-          <h2>${homeContent.sections.quadrants.title}</h2>
-          <p>${homeContent.sections.quadrants.description}</p>
-        </div>
-        <div class="quadrant-grid" id="quadrant-grid"></div>
-      </section>
-    </main>
-  </div>
+  <section class="info-grid">
+    <div class="section-heading">
+      <h2>${homeContent.sections.quadrants.title}</h2>
+      <p>${homeContent.sections.quadrants.description}</p>
+    </div>
+    <div class="quadrant-grid" id="quadrant-grid"></div>
+  </section>
 `;
 
-const radarSvg = document.querySelector("#radar");
-const radarContext = document.querySelector("#radar-context");
-const ringGrid = document.querySelector("#ring-grid");
-const quadrantGrid = document.querySelector("#quadrant-grid");
+const shell = document.createElement("div");
+shell.className = "planb-page-shell";
+shell.append(header, main);
+
+document.querySelector("#app").replaceChildren(shell);
+
+initializePlanBThemeToggle();
+
+const radarSvg = main.querySelector("#radar");
+const radarContext = main.querySelector("#radar-context");
+const ringGrid = main.querySelector("#ring-grid");
+const quadrantGrid = main.querySelector("#quadrant-grid");
 
 function updateQueryString(radarKey) {
   const url = new URL(window.location.href);
